@@ -1,7 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 import { useWebSocket } from '../../_hooks/useWebsocket';
 import {
   ToastContainer,
@@ -54,19 +53,6 @@ function toastWithStyle(message, eventType) {
 
 export default function NotificationWidget() {
   const { wsData } = useWebSocket();
-  const searchParams = useSearchParams();
-
-  const [width, setWidth] = useState(null);
-  const [height, setHeight] = useState(null);
-
-  useEffect(() => {
-    const w = searchParams.get('width');
-    const h = searchParams.get('height');
-    if (w && h) {
-      setWidth(w);
-      setHeight(h);
-    }
-  }, [searchParams]);
 
   useEffect(() => {
     if (wsData?.type === 'NOTIFICATION' && wsData.message) {
@@ -77,10 +63,7 @@ export default function NotificationWidget() {
   if (!width || !height) return null;
 
   return (
-    <div
-      style={{ width: `${width}px`, height: `${height}px` }}
-      className="relative pointer-events-none"
-    >
+    <div className="relative pointer-events-none h-[1080px] w-[1920px]">
       <ToastContainer closeButton={false} />
     </div>
   );
