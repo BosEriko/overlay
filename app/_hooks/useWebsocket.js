@@ -7,7 +7,6 @@ const WebSocketContext = createContext();
 export const WebSocketProvider = ({ children }) => {
   const [wsData, setWsData] = useState(null);
   const [socket, setSocket] = useState(null);
-  const [connected, setConnected] = useState(true);
 
   useEffect(() => {
     let ws;
@@ -18,7 +17,6 @@ export const WebSocketProvider = ({ children }) => {
 
       ws.onopen = () => {
         console.log('✅ Connected to WebSocket server');
-        setConnected(true);
       };
 
       ws.onmessage = (event) => {
@@ -29,8 +27,7 @@ export const WebSocketProvider = ({ children }) => {
 
       ws.onclose = () => {
         console.log('❌ WebSocket connection closed');
-        setConnected(false);
-        setTimeout(connect, 3000);
+        setTimeout(connect, 1000);
       };
 
       ws.onerror = (err) => {
@@ -47,7 +44,7 @@ export const WebSocketProvider = ({ children }) => {
   }, []);
 
   return (
-    <WebSocketContext.Provider value={{ wsData, socket, connected }}>
+    <WebSocketContext.Provider value={{ wsData, socket }}>
       {children}
     </WebSocketContext.Provider>
   );
