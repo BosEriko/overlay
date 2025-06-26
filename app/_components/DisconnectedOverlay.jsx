@@ -8,7 +8,7 @@ export default function DisconnectedOverlay() {
   if (connected) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/25 z-50 flex items-center justify-center pointer-events-none">
+    <div className="fixed inset-0 bg-black z-50 flex items-center justify-center pointer-events-none">
       <div className="text-white text-2xl font-bold">
         BotEriko is Disconnected.
       </div>
