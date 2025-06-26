@@ -17,7 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body>
         <WebSocketProvider>
-          <div className="relative w-[1920px] h-[1080px] overflow-hidden">{children}</div>
+          <div>{children}</div>
         </WebSocketProvider>
       </body>
     </html>
