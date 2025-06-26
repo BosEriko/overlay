@@ -1,12 +1,16 @@
 import { WebSocketProvider } from './_hooks/useWebsocket';
-import "./globals.css";
+import DisconnectedOverlay from './_components/DisconnectedOverlay';
+import './globals.css';
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body>
         <WebSocketProvider>
-          <div>{children}</div>
+          <div className="relative">
+            {children}
+            <DisconnectedOverlay />
+          </div>
         </WebSocketProvider>
       </body>
     </html>
