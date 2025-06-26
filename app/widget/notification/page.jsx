@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useWebSocket } from '../../_hooks/useWebsocket';
 import {
@@ -35,7 +35,7 @@ function toastWithStyle(message, eventType) {
     pauseOnHover: true,
     draggable: true,
     theme: 'dark',
-    closeButton: false
+    closeButton: false,
   };
 
   switch (variant) {
@@ -55,8 +55,18 @@ function toastWithStyle(message, eventType) {
 export default function NotificationWidget() {
   const { wsData } = useWebSocket();
   const searchParams = useSearchParams();
-  const width = searchParams.get('width');
-  const height = searchParams.get('height');
+
+  const [width, setWidth] = useState(null);
+  const [height, setHeight] = useState(null);
+
+  useEffect(() => {
+    const w = searchParams.get('width');
+    const h = searchParams.get('height');
+    if (w && h) {
+      setWidth(w);
+      setHeight(h);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     if (wsData?.type === 'NOTIFICATION' && wsData.message) {
