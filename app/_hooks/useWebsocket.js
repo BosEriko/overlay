@@ -1,5 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from 'react';
+import env from "../_utilities/env";
 
 const WebSocketContext = createContext();
 
@@ -8,7 +9,8 @@ export const WebSocketProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    const ws = new WebSocket('ws://localhost:8080');
+    const ws = new WebSocket(env.websocket);
+
     setSocket(ws);
 
     ws.onopen = () => {
