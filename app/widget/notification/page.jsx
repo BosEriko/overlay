@@ -35,7 +35,7 @@ function toastWithStyle(message, eventType) {
     pauseOnHover: true,
     draggable: true,
     theme: 'dark',
-    closeButton: false, // ✅ no close button
+    closeButton: false
   };
 
   switch (variant) {
@@ -71,7 +71,7 @@ export default function NotificationWidget() {
       style={{ width: `${width}px`, height: `${height}px` }}
       className="relative pointer-events-none"
     >
-      <ToastContainer closeButton={false} /> {/* ✅ no close button */}
+      <ToastContainer closeButton={false} />
     </div>
   );
 }
