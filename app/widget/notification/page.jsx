@@ -60,8 +60,6 @@ export default function NotificationWidget() {
     }
   }, [wsData]);
 
-  if (!width || !height) return null;
-
   return (
     <div className="relative pointer-events-none h-[1080px] w-[1920px]">
       <ToastContainer closeButton={false} />
