@@ -1,7 +1,7 @@
 'use client';
 import { useWebSocket } from '../../_hooks/useWebsocket';
 
-const WebSocketStatus = () => {
+export default function ConnectionWidget() {
   const { isConnected } = useWebSocket();
 
   if (isConnected) return null;
@@ -14,5 +14,3 @@ const WebSocketStatus = () => {
     </div>
   );
 };
-
-export default WebSocketStatus;
