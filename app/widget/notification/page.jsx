@@ -8,11 +8,17 @@ import {
 import 'react-toastify/dist/ReactToastify.css';
 
 const ping = typeof Audio !== 'undefined' ? new Audio('/sounds/notification.m4a') : null;
+if (ping) {
+  ping.preload = 'auto';
+  ping.load();
+}
 
 function toastWithStyle(message, eventType) {
   if (ping) {
     ping.currentTime = 0;
-    ping.play();
+    ping.play().catch(err => {
+      console.warn('🔇 Audio play blocked:', err);
+    });
   }
 
   const variantMap = {
