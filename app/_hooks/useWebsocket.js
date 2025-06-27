@@ -7,6 +7,7 @@ const WebSocketContext = createContext();
 export const WebSocketProvider = ({ children }) => {
   const [wsData, setWsData] = useState(null);
   const [socket, setSocket] = useState(null);
+  const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     let ws;
@@ -17,6 +18,13 @@ export const WebSocketProvider = ({ children }) => {
 
       ws.onopen = () => {
         console.log('✅ Connected to WebSocket server');
+        setIsConnected(true);
+
+        ws.pingInterval = setInterval(() => {
+          if (ws.readyState === WebSocket.OPEN) {
+            ws.send(JSON.stringify({ type: 'ping' }));
+          }
+        }, 30000);
       };
 
       ws.onmessage = (event) => {
@@ -27,6 +35,8 @@ export const WebSocketProvider = ({ children }) => {
 
       ws.onclose = () => {
         console.log('❌ WebSocket connection closed');
+        setIsConnected(false);
+        clearInterval(ws.pingInterval);
         setTimeout(connect, 1000);
       };
 
@@ -39,12 +49,15 @@ export const WebSocketProvider = ({ children }) => {
     connect();
 
     return () => {
-      if (ws) ws.close();
+      if (ws) {
+        clearInterval(ws.pingInterval);
+        ws.close();
+      }
     };
   }, []);
 
   return (
-    <WebSocketContext.Provider value={{ wsData, socket }}>
+    <WebSocketContext.Provider value={{ wsData, socket, isConnected }}>
       {children}
     </WebSocketContext.Provider>
   );
