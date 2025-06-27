@@ -9,3 +9,4 @@ cp .env.example .env.local
 ## Widgets
 Here are the list of widgets that are available:
 - [Notification](https://overlay.boseriko.com/widget/notification)
+- [Connection](https://overlay.boseriko.com/widget/connection)
