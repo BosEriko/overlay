@@ -8,7 +8,7 @@ const pixelify = Pixelify_Sans({
   weight: ['700']
 });
 
-export default function Typing() {
+export default function TypingWidget() {
   const { wsData } = useWebSocket();
   const [words, setWords] = useState([]);
   const [idCounter, setIdCounter] = useState(0);
