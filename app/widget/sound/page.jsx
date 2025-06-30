@@ -3,7 +3,15 @@ import { useEffect, useRef } from 'react';
 import { useWebSocket } from '../../_hooks/useWebsocket';
 
 // Sound map
-const SOUND_IDS = ['PROFANITY', 'GOTTEM', 'NICE_TRY'];
+const SOUND_IDS = [
+  'BOO',
+  'DING_DONG',
+  'GOTTEM',
+  'HELLO',
+  'JOKE',
+  'NICE_TRY',
+  'PROFANITY',
+];
 
 export default function SoundWidget() {
   const { wsData } = useWebSocket();
