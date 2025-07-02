@@ -24,7 +24,7 @@ function playSound() {
   });
 }
 
-function ToastContent({ children, className = "" }) {
+function ToastContent({ children, className = '' }) {
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
@@ -41,37 +41,29 @@ function ToastContent({ children, className = "" }) {
   );
 }
 
-function showToast({
-  type,
-  message,
-  username,
-}) {
+const toastQueue = [];
+const MAX_TOASTS = 5;
+
+function showToast({ type, message, username }) {
   const position = 'bottom-left';
   const duration = 5000;
 
-  if (type === 'event') {
-    playSound();
-    toast.custom(
-      () => (
-        <ToastContent className="border-yellow-500 bg-yellow-300 text-yellow-800">
-          <p>{message}</p>
-        </ToastContent>
-      ),
-      { position, duration }
-    );
+  if (toastQueue.length >= MAX_TOASTS) {
+    const oldest = toastQueue.shift();
+    if (oldest) toast.dismiss(oldest);
   }
 
-  if (type === 'chat') {
-    toast.custom(
-      () => (
-        <ToastContent className="border-yellow-500 bg-yellow-300 text-yellow-800">
-          <p className="font-bold text-yellow-700">{username}</p>
-          <p>{message}</p>
-        </ToastContent>
-      ),
-      { position, duration }
-    );
-  }
+  const id = toast.custom(
+    () => (
+      <ToastContent className="border-yellow-500 bg-yellow-300 text-yellow-800">
+        {type === 'chat' && <p className="font-bold text-yellow-700">{username}</p>}
+        <p>{message}</p>
+      </ToastContent>
+    ),
+    { position, duration }
+  );
+
+  toastQueue.push(id);
 }
 
 export default function FeedWidget() {
