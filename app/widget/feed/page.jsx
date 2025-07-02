@@ -3,6 +3,12 @@
 import { useEffect, useState } from 'react';
 import { useWebSocket } from '../../_hooks/useWebsocket';
 import toast, { Toaster } from 'react-hot-toast';
+import { Pixelify_Sans } from 'next/font/google';
+
+const pixelify = Pixelify_Sans({
+  subsets: ['latin'],
+  weight: ['700']
+});
 
 const ping = typeof Audio !== 'undefined' ? new Audio('/sounds/notification.m4a') : null;
 if (ping) {
@@ -18,7 +24,7 @@ function playSound() {
   });
 }
 
-function ToastContent({ children, className }) {
+function ToastContent({ children, className = "" }) {
   const [exiting, setExiting] = useState(false);
 
   useEffect(() => {
@@ -27,9 +33,7 @@ function ToastContent({ children, className }) {
   }, []);
 
   return (
-    <div
-      className={`${exiting ? 'animate-slide-out' : 'animate-slide-in'} ${className} max-w-sm w-full rounded-2xl shadow-xl p-4 border-l-4 pointer-events-auto`}
-    >
+    <div className={`${exiting ? 'animate-slide-out' : 'animate-slide-in'} ${pixelify.className} ${className} max-w-sm w-full rounded-2xl shadow-xl p-5 pointer-events-auto border-[5px] text-xl`}>
       {children}
     </div>
   );
@@ -47,8 +51,8 @@ function showToast({
     playSound();
     toast.custom(
       () => (
-        <ToastContent className="bg-black border-yellow-500">
-          <p className="text-white text-sm">{message}</p>
+        <ToastContent className="border-yellow-500 bg-yellow-300 text-yellow-800">
+          <p>{message}</p>
         </ToastContent>
       ),
       { position, duration }
@@ -58,9 +62,9 @@ function showToast({
   if (type === 'chat') {
     toast.custom(
       () => (
-        <ToastContent className="bg-zinc-900 border-blue-500">
-          <p className="text-yellow-400 font-semibold text-sm">{username}</p>
-          <p className="text-white text-sm">{message}</p>
+        <ToastContent className="border-yellow-500 bg-yellow-300 text-yellow-800">
+          <p className="text-white">{username}</p>
+          <p>{message}</p>
         </ToastContent>
       ),
       { position, duration }
