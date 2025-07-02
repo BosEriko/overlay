@@ -34,7 +34,7 @@ function ToastContent({ children, className = "" }) {
 
   return (
     <div
-      className={`${exiting ? 'animate-slide-out' : 'animate-slide-in'} ${pixelify.className} ${className} max-w-sm w-full shadow-xl p-5 pointer-events-auto border-[5px] text-xl`}
+      className={`${exiting ? 'animate-slide-out' : 'animate-slide-in'} ${pixelify.className} ${className} max-w-sm w-full shadow-xl p-1 pointer-events-auto border-[5px] text-xl`}
       style={{ borderRadius: '25px' }}
     >
       {children}
@@ -66,7 +66,7 @@ function showToast({
     toast.custom(
       () => (
         <ToastContent className="border-yellow-500 bg-yellow-300 text-yellow-800">
-          <p className="text-white">{username}</p>
+          <p className="font-bold text-yellow-700">{username}</p>
           <p>{message}</p>
         </ToastContent>
       ),
