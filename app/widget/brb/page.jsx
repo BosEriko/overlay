@@ -26,7 +26,7 @@ function generateSequence(message, repeat = 7) {
 
 function MarqueeRow({ message, direction }) {
   return (
-    <Marquee direction={direction}>
+    <Marquee direction={direction} gradient={false} speed={50}>
       <div className="text-[100px] h-[150px] flex gap-[20px] items-center uppercase mr-[20px]">
         {generateSequence(message)}
       </div>
@@ -49,14 +49,22 @@ export default function BrbWidget() {
   if (!isVisible) return null;
 
   return (
-    <div className={`${pixelify.className} h-[1080px] w-[1920px] overflow-hidden text-yellow-700 bg-yellow-300`}>
-      {[...Array(50)].map((_, i) => (
-        <MarqueeRow
-          key={i}
-          message={message}
-          direction={i % 2 === 0 ? 'left' : 'right'}
-        />
-      ))}
+    <div className={`${pixelify.className} relative w-[1920px] h-[1080px] bg-yellow-300 overflow-hidden text-yellow-700`}>
+      <div
+        className="absolute -left-[500px] -top-[500px] w-[3000px] h-[3000px] rotate-[20deg] scale-[1.2]"
+        style={{
+          transformOrigin: 'center',
+        }}
+      >
+        {[...Array(10)].map((_, i) => (
+          <div key={i} className="mb-[40px]">
+            <MarqueeRow
+              message={message}
+              direction={i % 2 === 0 ? 'left' : 'right'}
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
