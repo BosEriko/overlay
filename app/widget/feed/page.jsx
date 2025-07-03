@@ -82,7 +82,7 @@ function showToast({ type, message, username }) {
             : 'border-yellow-500 bg-yellow-300 text-yellow-800'
         }
       >
-        <div className="flex items-start gap-3">
+        <div className="flex items-start gap-3 overflow-hidden">
           <FontAwesomeIcon
             icon={icon}
             className={`text-2xl shrink-0 mt-1 ${theme.iconColor}`}
