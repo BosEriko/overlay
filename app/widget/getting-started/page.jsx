@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Marquee from 'react-fast-marquee';
 import { Pixelify_Sans } from 'next/font/google';
 
@@ -39,7 +39,20 @@ function MarqueeRow({ message, direction }) {
 
 export default function BrbWidget() {
   const [message] = useState('Getting Started');
-  const [isVisible, setIsVisible] = useState(true);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const now = new Date();
+    const currentDay = now.getDay();
+    const currentHour = now.getHours();
+
+    const isScheduledDay = COUNTDOWN_SCHEDULE.includes(currentDay);
+    const isWithinTime =
+      currentHour >= COUNTDOWN_START &&
+      currentHour < COUNTDOWN_START + COUNTDOWN_DURATION;
+
+    setIsVisible(isScheduledDay && isWithinTime);
+  }, []);
 
   if (!isVisible) return null;
 
