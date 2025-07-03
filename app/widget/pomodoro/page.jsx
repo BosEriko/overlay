@@ -59,7 +59,7 @@ export default function PomodoroWidget() {
 
   return (
     <div className="h-[1080px] w-[1920px] relative">
-      <div className="absolute right-[17px] top-[69px]">
+      <div className="absolute right-[17px] top-[66px]">
         <Window title={message} icon={Icon}>
             <div
             style={{ backgroundColor: bgColor }}
