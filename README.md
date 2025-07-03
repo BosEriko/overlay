@@ -13,6 +13,7 @@ Here are the list of widgets that are available:
 - [Countdown](https://overlay.boseriko.com/widget/countdown)
 - [Desktop](https://overlay.boseriko.com/widget/desktop)
 - [Feed](https://overlay.boseriko.com/widget/feed)
+- [Getting Started](https://overlay.boseriko.com/widget/getting-started)
 - [Pomodoro](https://overlay.boseriko.com/widget/pomodoro)
 - [Sound](https://overlay.boseriko.com/widget/sound)
 - [Typing](https://overlay.boseriko.com/widget/typing)
