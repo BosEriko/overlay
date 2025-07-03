@@ -42,16 +42,21 @@ export default function BrbWidget() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const now = new Date();
-    const currentDay = now.getDay();
-    const currentHour = now.getHours();
+    const checkTime = () => {
+      const now = new Date();
+      const currentDay = now.getDay();
+      const currentHour = now.getHours();
 
-    const isScheduledDay = COUNTDOWN_SCHEDULE.includes(currentDay);
-    const isWithinTime =
-      currentHour >= COUNTDOWN_START &&
-      currentHour < COUNTDOWN_START + COUNTDOWN_DURATION;
+      const isScheduledDay = COUNTDOWN_SCHEDULE.includes(currentDay);
+      const isWithinTime = currentHour >= COUNTDOWN_START && currentHour < COUNTDOWN_START + COUNTDOWN_DURATION;
 
-    setIsVisible(isScheduledDay && isWithinTime);
+      setIsVisible(isScheduledDay && isWithinTime);
+    };
+
+    checkTime();
+
+    const interval = setInterval(checkTime, 30 * 1000);
+    return () => clearInterval(interval);
   }, []);
 
   if (!isVisible) return null;
