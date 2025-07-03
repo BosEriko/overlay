@@ -17,3 +17,6 @@ Here are the list of widgets that are available:
 - [Pomodoro](https://overlay.boseriko.com/widget/pomodoro)
 - [Sound](https://overlay.boseriko.com/widget/sound)
 - [Typing](https://overlay.boseriko.com/widget/typing)
+
+## Custom Window
+You can also create custom windows by doing `node screenshots` on the browser and removing the white background with **Gimp**. Use the [Window](https://overlay.boseriko.com/widget/window) widget for making custom windows.
