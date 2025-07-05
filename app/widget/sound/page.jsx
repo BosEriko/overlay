@@ -7,6 +7,7 @@ const SOUND_IDS = [
   'BOO',
   'GOTTEM',
   'HELLO',
+  'HUH',
   'JOKE',
   'NICE_TRY',
   'PROFANITY',
