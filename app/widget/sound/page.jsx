@@ -5,6 +5,7 @@ import { useWebSocket } from '../../_hooks/useWebsocket';
 // Sound map
 const SOUND_IDS = [
   'BOO',
+  'DING_DONG',
   'GOTTEM',
   'HELLO',
   'HUH',
