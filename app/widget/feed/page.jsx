@@ -112,7 +112,7 @@ function showToast({ type, message, username, user }) {
               </div>
             </div>
           </div>
-          <div style={{ backgroundColor: "rgba(0,0,0,0.25)" }} className="w-full py-2 px-5 text-sm flex justify-between items-center text-white">
+          <div style={{ backgroundColor: "rgba(0,0,0,0.25)" }} className="w-full py-2 px-4 text-sm flex justify-between items-center text-white">
             <div>twitch.tv/{user?.display_name}</div>
             <div>BE-{user?.id}</div>
           </div>
