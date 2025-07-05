@@ -78,7 +78,7 @@ function showToast({ type, message, username, user }) {
   const toastClassMap = {
     event: `bg-gradient-to-br ${theme.gradient} ${theme.textColor} border-white`,
     chat: 'border-yellow-500 bg-yellow-300 text-yellow-800',
-    shoutout: 'border-yellow-300 bg-gradient-to-br from-yellow-300 to-yellow-500 text-yellow-800',
+    shoutout: 'text-yellow-800 topography',
   };
 
   const id = toast.custom(
