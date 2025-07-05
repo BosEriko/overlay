@@ -71,6 +71,7 @@ function showToast({ type, message, username, user }) {
   }
 
   const isEvent = type === 'event';
+  const isChat = type === 'chat';
   const isShoutout = type === 'shoutout';
 
   const icon = isEvent ? faStar : faComment;
@@ -122,7 +123,7 @@ function showToast({ type, message, username, user }) {
   );
 
   toastQueue.push(id);
-  if (isEvent) playSound();
+  if (!isChat) playSound();
 }
 
 export default function FeedWidget() {
