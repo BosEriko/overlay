@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { Pixelify_Sans } from 'next/font/google';
+import env from '../../_utilities/env';
 
 const pixelify = Pixelify_Sans({
   subsets: ['latin'],
@@ -10,10 +11,27 @@ const pixelify = Pixelify_Sans({
 const STREAM_SCHEDULE = [1, 2, 3, 4, 5];
 const STREAM_START = 20;
 const STREAM_DURATION = 4;
-const STREAM_ICON = "https://static-cdn.jtvnw.net/jtv_user_pictures/c080d827-5e61-4f5b-afb4-a69825a9ade0-profile_image-70x70.png";
+const STREAM_USERNAME = 'TwisWua';
 
 export default function CountdownWidget() {
   const [displayText, setDisplayText] = useState('');
+  const [streamIcon, setStreamIcon] = useState('');
+
+  useEffect(() => {
+    const fetchTwitchDetails = async () => {
+      try {
+        const res = await fetch(`${env.server}/api/details?username=${STREAM_USERNAME}`);
+        const data = await res.json();
+        if (data?.profile_image_url) {
+          setStreamIcon(data.profile_image_url);
+        }
+      } catch (err) {
+        console.error('Failed to fetch Twitch details:', err);
+      }
+    };
+
+    fetchTwitchDetails();
+  }, []);
 
   useEffect(() => {
     const updateCountdown = () => {
@@ -62,7 +80,14 @@ export default function CountdownWidget() {
       <div className="absolute left-[17px] top-[66px]">
         <div className={`${pixelify.className} bg-yellow-300 rounded-full overflow-hidden shadow-xl text-center border-[5px] border-yellow-500`} style={{ borderRadius: '10px' }}>
           <div className="text-white text-yellow-800 text-4xl flex items-center justify-center gap-3">
-            <img src={STREAM_ICON} className="w-15 h-15 bg-white rounded-full border-yellow-300 border-5" style={{ borderRadius: '10px' }} />
+            {streamIcon && (
+              <img
+                src={streamIcon}
+                alt="Streamer Icon"
+                className="w-15 h-15 bg-white rounded-full border-yellow-300 border-5"
+                style={{ borderRadius: '10px' }}
+              />
+            )}
             <div className="pr-5">{displayText}</div>
           </div>
         </div>
