@@ -9,6 +9,7 @@ cp .env.example .env.local
 ## Widgets
 Here are the list of widgets that are available:
 - [BRB](https://overlay.boseriko.com/widget/brb)
+- [Censor](https://overlay.boseriko.com/widget/censor)
 - [Connection](https://overlay.boseriko.com/widget/connection)
 - [Countdown](https://overlay.boseriko.com/widget/countdown)
 - [Desktop](https://overlay.boseriko.com/widget/desktop)
