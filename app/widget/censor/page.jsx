@@ -15,6 +15,6 @@ export default function BrbWidget() {
   if (!isVisible) return null;
 
   return (
-    <div className="w-[1920px] h-[1080px] bg-cover bg-no-repeat bg-center" style={{ backgroundImage: "url('/images/profile.png')" }}></div>
+    <div className="w-[1920px] h-[1080px] bg-cover bg-no-repeat bg-center" style={{ backgroundImage: "url('/images/censor.png')" }}></div>
   );
 }
