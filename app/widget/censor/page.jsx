@@ -15,6 +15,6 @@ export default function BrbWidget() {
   if (!isVisible) return null;
 
   return (
-    <div className="w-[1920px] h-[1080px] glassmorphism"></div>
+    <div className="w-[1920px] h-[1080px] opacity-75 texture"></div>
   );
 }
