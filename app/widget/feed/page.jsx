@@ -26,6 +26,28 @@ function playSound() {
   });
 }
 
+function renderEmotes(message, emotes) {
+  if (!emotes || typeof message !== 'string') return message;
+
+  const words = message.split(/(\s+)/);
+
+  return words.map((word, index) => {
+    const trimmed = word.trim();
+    if (emotes[trimmed]) {
+      return (
+        <img
+          key={index}
+          src={emotes[trimmed]}
+          alt={trimmed}
+          className="inline h-[1.5em] mx-1 align-middle"
+          style={{ display: 'inline-block' }}
+        />
+      );
+    }
+    return <span key={index}>{word}</span>;
+  });
+}
+
 function ToastContent({ children, className = '', type }) {
   const [exiting, setExiting] = useState(false);
 
@@ -61,7 +83,7 @@ const pastelThemes = [
   { gradient: 'from-fuchsia-200 to-sky-200', textColor: 'text-fuchsia-900', iconColor: 'text-fuchsia-800' },
 ];
 
-function showToast({ type, message, username, user }) {
+function showToast({ type, message, username, user, emotes }) {
   const position = 'bottom-left';
   const duration = 5000;
 
@@ -89,7 +111,7 @@ function showToast({ type, message, username, user }) {
           <FontAwesomeIcon icon={icon} className={`text-2xl shrink-0 mt-1 ${theme.iconColor}`} />
           <div>
             {type === 'chat' && <p className="font-bold text-yellow-700">{username}</p>}
-            <p>{message}</p>
+            <p>{renderEmotes(message, emotes)}</p>
           </div>
         </div> }
         { isShoutout && <div className="flex flex-col gap-3">
@@ -135,7 +157,8 @@ export default function FeedWidget() {
         type: wsData.feed_type,
         message: wsData.message,
         username: wsData.username,
-        user: wsData.user || {}
+        user: wsData.user || {},
+        emotes: wsData.emotes || null
       });
     }
   }, [wsData]);
