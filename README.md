@@ -17,6 +17,7 @@ Here are the list of widgets that are available:
 - [Getting Started](https://overlay.boseriko.com/widget/getting-started)
 - [Pomodoro](https://overlay.boseriko.com/widget/pomodoro)
 - [Sound](https://overlay.boseriko.com/widget/sound)
+- [Todo](https://overlay.boseriko.com/widget/todo)
 - [Typing](https://overlay.boseriko.com/widget/typing)
 
 ## Custom Window
