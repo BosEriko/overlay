@@ -28,7 +28,7 @@ export default function TodoWidget() {
   const Icon = () => (
     <FontAwesomeIcon
       icon={faListCheck}
-      className="text-green-600 text-3xl drop-shadow-[1px_1px_2px_white]"
+      className="text-yellow-700 text-3xl drop-shadow-[1px_1px_2px_white]"
     />
   );
 
@@ -37,21 +37,21 @@ export default function TodoWidget() {
 
   return (
     <div className="h-[1080px] w-[1920px] relative">
-      <div className="absolute right-[17px] top-[380px]">
-        <Window title="Todo List" icon={Icon}>
-          <div className="bg-white text-black text-lg p-4 w-[350px]">
+      <div className="absolute right-[17px] top-[374px]">
+        <Window title="Todo" icon={Icon} height="auto">
+          <div className="bg-yellow-500 text-yellow-700 text-xl p-4 w-full h-full [text-shadow:_1px_1px_2px_white]">
             <ul className="space-y-2">
               {displayedTodos.map((item, index) => (
                 <li
                   key={index}
-                  className={`flex items-start ${item.done ? 'line-through text-gray-400' : ''}`}
+                  className="flex items-start"
                 >
                   <span className="mr-2">{index + 1}.</span>
-                  <span>{item.todo}</span>
+                  <span className={item.done ? 'line-through' : ''}>{item.todo}</span>
                 </li>
               ))}
               {hasMore && (
-                <li className="text-sm italic text-gray-600">
+                <li className="text-sm italic text-yellow-700">
                   ...and more
                 </li>
               )}
