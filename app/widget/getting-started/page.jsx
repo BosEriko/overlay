@@ -37,7 +37,7 @@ function MarqueeRow({ message, direction }) {
   );
 }
 
-export default function BrbWidget() {
+export default function GettingStartedWidget() {
   const [message] = useState('Getting Started');
   const [isVisible, setIsVisible] = useState(false);
 

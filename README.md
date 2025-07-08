@@ -15,9 +15,8 @@ Here are the list of widgets that are available:
 - [Desktop](https://overlay.boseriko.com/widget/desktop)
 - [Feed](https://overlay.boseriko.com/widget/feed)
 - [Getting Started](https://overlay.boseriko.com/widget/getting-started)
-- [Pomodoro](https://overlay.boseriko.com/widget/pomodoro)
+- [Task Manager](https://overlay.boseriko.com/widget/task-manager)
 - [Sound](https://overlay.boseriko.com/widget/sound)
-- [Todo](https://overlay.boseriko.com/widget/todo)
 - [Typing](https://overlay.boseriko.com/widget/typing)
 
 ## Custom Window
