@@ -61,7 +61,10 @@ export default function TaskManagerWidget() {
     }
   }, [wsData]);
 
-  if (!timerState.isPomodoroActive) return null;
+  const isPomodoroVisible = timerState.isVisible && timerState.isPomodoroActive;
+  const isTodoVisible = todoState.isVisible && todoState.todos.length > 0;
+
+  if (!isPomodoroVisible && !isTodoVisible) return null;
 
   let bgColor = 'tomato';
   let message = 'Focusing';
@@ -74,15 +77,8 @@ export default function TaskManagerWidget() {
     message = 'Break';
   }
 
-  if (!timerState.isVisible) return null;
-
   const displayedTodos = todoState.todos.slice(0, 5);
   const hasMore = todoState.todos.length > 5;
-
-  const isPomodoroVisible = timerState.isVisible;
-  const isTodoVisible = todoState.isVisible && todoState.todos.length > 0;
-
-  if (!isPomodoroVisible && !isTodoVisible) return null;
 
   return (
     <div className="h-[1080px] w-[1920px] relative">
