@@ -83,7 +83,7 @@ export default function TaskManagerWidget() {
   return (
     <div className="h-[1080px] w-[1920px] relative">
       <div className="absolute right-[17px] top-[66px] flex flex-col gap-[10px]">
-        { isPomodoroVisible && <Window title={message} icon={PomodoroIcon}>
+        { isPomodoroVisible && <Window title={message} icon={PomodoroIcon} width="400px" height="auto">
             <div
               style={{ backgroundColor: bgColor }}
               className="text-[100px] text-white text-center w-full h-full flex items-center justify-center"
@@ -91,7 +91,7 @@ export default function TaskManagerWidget() {
               <div>{formatTime(timerState.time)}</div>
             </div>
         </Window> }
-        { isTodoVisible && <Window title="Todo" icon={TodoIcon} height="auto">
+        { isTodoVisible && <Window title="Todo" icon={TodoIcon} width="400px" height="auto">
           <div className="bg-yellow-500 text-yellow-700 text-xl p-4 w-full h-full [text-shadow:_1px_1px_2px_white]">
             <ul className="space-y-2">
               {displayedTodos.map((item, index) => (
@@ -100,7 +100,7 @@ export default function TaskManagerWidget() {
                   className="flex items-start"
                 >
                   <span className="mr-2">{index + 1}.</span>
-                  <span className={item.done ? 'line-through' : ''}>{item.todo}</span>
+                  <span className={`overflow-hidden whitespace-nowrap text-ellipsis ${item.done ? 'line-through' : ''}`}>{item.todo}</span>
                 </li>
               ))}
               {hasMore && (
