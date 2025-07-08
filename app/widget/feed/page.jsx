@@ -69,9 +69,6 @@ function ToastContent({ children, className = '', type }) {
   );
 }
 
-const toastQueue = [];
-const MAX_TOASTS = 5;
-
 // Define gradients and associated text/icon colors
 const pastelThemes = [
   { gradient: 'from-pink-200 to-purple-200', textColor: 'text-purple-800', iconColor: 'text-purple-700' },
@@ -86,11 +83,6 @@ const pastelThemes = [
 function showToast({ type, message, username, user, emotes }) {
   const position = 'bottom-left';
   const duration = 5000;
-
-  if (toastQueue.length >= MAX_TOASTS) {
-    const oldest = toastQueue.shift();
-    if (oldest) toast.dismiss(oldest);
-  }
 
   const isEvent = type === 'event';
   const isChat = type === 'chat';
@@ -144,7 +136,6 @@ function showToast({ type, message, username, user, emotes }) {
     { position, duration }
   );
 
-  toastQueue.push(id);
   if (!isChat) playSound();
 }
 
