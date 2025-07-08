@@ -113,7 +113,7 @@ function showToast({ type, message, username, user, emotes }) {
           </div>
           <div className="uppercase text-white font-bold text-2xl drop-shadow px-3">Bos Eriko University</div>
           <div className="flex gap-3 items-center px-3 mb-2">
-            <div><img src={user?.profile_image_url} className="h-30 w-30 rounded-lg border-[5px] border-yellow-500"/></div>
+            <div><img src={user?.profile_image_url} className="h-30 w-30 rounded-lg border-[5px] border-yellow-600 bg-yellow-600"/></div>
             <div className="flex flex-col">
               <div className="font-bold text-2xl text-white drop-shadow">{user?.display_name}</div>
               <div className="flex gap-1 text-white drop-shadow">
