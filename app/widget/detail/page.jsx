@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useWebSocket } from '../../_hooks/useWebsocket';
 import { Pixelify_Sans } from 'next/font/google';
+import env from '../../_utilities/env';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSkullCrossbones,
@@ -45,11 +46,9 @@ export default function DetailWidget() {
   useEffect(() => {
     const fetchTetrioData = async () => {
       try {
-        const res = await fetch('https://ch.tetr.io/api/users/boseriko');
+        const res = await fetch(`${env.server}/api/profile/tetrio?username=boseriko`);
         const json = await res.json();
-        if (json.success) {
-          setGameData(json.user);
-        }
+        if (json?.username) setGameData(json);
       } catch (error) {
         console.error('Failed to fetch TETR.IO data:', error);
       }
@@ -94,7 +93,6 @@ export default function DetailWidget() {
     );
   }
 
-  // Example placeholder if you want to add Fortnite support later
   if (streamDetail?.game_name === 'Fortnite') {
     return (
       <Container>
