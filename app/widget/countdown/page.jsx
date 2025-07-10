@@ -79,7 +79,7 @@ export default function CountdownWidget() {
     <div className="h-[1080px] w-[1920px] relative">
       <div className="absolute left-[17px] top-[66px]">
         <div className={`${pixelify.className} bg-yellow-300 rounded-full overflow-hidden shadow-xl text-center border-[5px] border-yellow-500`} style={{ borderRadius: '10px' }}>
-          <div className="text-white text-yellow-800 text-4xl flex items-center justify-center gap-3">
+          <div className="text-yellow-800 text-4xl flex items-center justify-center gap-3">
             {streamIcon && (
               <img
                 src={streamIcon}
