@@ -13,10 +13,11 @@ Here are the list of widgets that are available:
 - [Connection](https://overlay.boseriko.com/widget/connection)
 - [Countdown](https://overlay.boseriko.com/widget/countdown)
 - [Desktop](https://overlay.boseriko.com/widget/desktop)
+- [Detail](https://overlay.boseriko.com/widget/detai)
 - [Feed](https://overlay.boseriko.com/widget/feed)
 - [Getting Started](https://overlay.boseriko.com/widget/getting-started)
-- [Task Manager](https://overlay.boseriko.com/widget/task-manager)
 - [Sound](https://overlay.boseriko.com/widget/sound)
+- [Task Manager](https://overlay.boseriko.com/widget/task-manager)
 - [Typing](https://overlay.boseriko.com/widget/typing)
 
 ## Custom Window
