@@ -100,12 +100,12 @@ export default function TaskManagerWidget() {
                   className="flex items-start"
                 >
                   <span className="mr-2">{index + 1}.</span>
-                  <span className={`overflow-hidden whitespace-nowrap text-ellipsis ${item.done ? 'line-through' : ''}`}>{item.todo}</span>
+                  <span className="overflow-hidden whitespace-nowrap text-ellipsis">{item.content}</span>
                 </li>
               ))}
               {hasMore && (
                 <li className="text-sm italic text-yellow-700">
-                  ...and more
+                  ...and {todoState.todos.length - 5} more
                 </li>
               )}
             </ul>
