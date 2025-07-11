@@ -7,8 +7,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSkullCrossbones,
   faClock,
-  faRankingStar,
   faLayerGroup,
+  faGamepad,
 } from '@fortawesome/free-solid-svg-icons';
 
 const pixelify = Pixelify_Sans({
@@ -69,7 +69,6 @@ export default function DetailWidget() {
     const xp = gameData?.xp || 0;
     const level = xp ? Math.floor(Math.pow(xp / 500, 0.6)) : 'N/A';
     const hoursPlayed = (xp / 500 / 60 / 60).toFixed(1);
-    const rank = gameData?.league?.rank?.toUpperCase() || 'Unranked';
 
     return (
       <Container>
@@ -85,10 +84,6 @@ export default function DetailWidget() {
           <FontAwesomeIcon icon={faLayerGroup} className="text-2xl text-yellow-700" />
           <div>Level: {level}</div>
         </Box>
-        <Box>
-          <FontAwesomeIcon icon={faRankingStar} className="text-2xl text-yellow-700" />
-          <div>Rank: {rank}</div>
-        </Box>
       </Container>
     );
   }
@@ -101,5 +96,12 @@ export default function DetailWidget() {
     );
   }
 
-  return null;
+  return (
+    <Container>
+      <Box>
+        <FontAwesomeIcon icon={faGamepad} className="text-2xl text-yellow-700" />
+        <div>{streamDetail?.game_name}</div>
+      </Box>
+    </Container>
+  );
 }
