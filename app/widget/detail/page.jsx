@@ -5,9 +5,9 @@ import { Pixelify_Sans } from 'next/font/google';
 import env from '../../_utilities/env';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faSkullCrossbones,
+  faIdCard,
   faClock,
-  faLayerGroup,
+  faRankingStar,
   faGamepad,
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -62,27 +62,25 @@ export default function DetailWidget() {
   if (!isStreaming) return null;
 
   if (streamDetail?.game_name === 'TETR.IO') {
+    const username = gameData?.username || 'Unknown';
     const totalGames = gameData?.gamesplayed || 0;
     const gamesWon = gameData?.gameswon || 0;
     const winRate = totalGames > 0 ? ((gamesWon / totalGames) * 100).toFixed(1) + '%' : 'N/A';
-
-    const xp = gameData?.xp || 0;
-    const level = xp ? Math.floor(Math.pow(xp / 500, 0.6)) : 'N/A';
-    const hoursPlayed = (xp / 500 / 60 / 60).toFixed(1);
+    const hoursPlayed = gameData?.gametime ? (gameData.gametime / 3600).toFixed(1) : 'N/A';
 
     return (
       <Container>
         <Box>
-          <FontAwesomeIcon icon={faSkullCrossbones} className="text-2xl text-yellow-700" />
+          <FontAwesomeIcon icon={faIdCard} className="text-2xl text-yellow-700" />
+          <div>Username: {username}</div>
+        </Box>
+        <Box>
+          <FontAwesomeIcon icon={faRankingStar} className="text-2xl text-yellow-700" />
           <div>Win Rate: {winRate}</div>
         </Box>
         <Box>
           <FontAwesomeIcon icon={faClock} className="text-2xl text-yellow-700" />
           <div>Play Time: {hoursPlayed} hrs</div>
-        </Box>
-        <Box>
-          <FontAwesomeIcon icon={faLayerGroup} className="text-2xl text-yellow-700" />
-          <div>Level: {level}</div>
         </Box>
       </Container>
     );
