@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import { useWebSocket } from '../../_hooks/useWebsocket';
 import Ticker from '../../_components/Ticker';
 
-export default function BrbWidget() {
+export default function TickerWidget() {
   const { wsData } = useWebSocket();
   const [message, setMessage] = useState('');
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (wsData?.type === 'BRB_COMMAND') {
+    if (wsData?.type === 'TICKER') {
       setMessage(wsData.message);
       setIsVisible(wsData.isVisible);
     }

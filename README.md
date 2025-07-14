@@ -8,7 +8,6 @@ cp .env.example .env.local
 
 ## Widgets
 Here are the list of widgets that are available:
-- [BRB](https://overlay.boseriko.com/widget/brb)
 - [Censor](https://overlay.boseriko.com/widget/censor)
 - [Connection](https://overlay.boseriko.com/widget/connection)
 - [Countdown](https://overlay.boseriko.com/widget/countdown)
@@ -18,6 +17,7 @@ Here are the list of widgets that are available:
 - [Getting Started](https://overlay.boseriko.com/widget/getting-started)
 - [Sound](https://overlay.boseriko.com/widget/sound)
 - [Task Manager](https://overlay.boseriko.com/widget/task-manager)
+- [Ticker](https://overlay.boseriko.com/widget/ticker)
 - [Typing](https://overlay.boseriko.com/widget/typing)
 
 ## Custom Window
