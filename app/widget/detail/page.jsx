@@ -86,14 +86,6 @@ export default function DetailWidget() {
     );
   }
 
-  if (streamDetail?.game_name === 'Fortnite') {
-    return (
-      <Container>
-        <Box>Fortnite details coming soon...</Box>
-      </Container>
-    );
-  }
-
   return (
     <Container>
       <Box>
