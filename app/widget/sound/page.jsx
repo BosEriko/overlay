@@ -14,6 +14,7 @@ const SOUND_IDS = [
   'JOKE',
   'NICE_TRY',
   'PROFANITY',
+  'SIT_DOWN',
   'STAND_UP',
   'STRETCH',
 ];
