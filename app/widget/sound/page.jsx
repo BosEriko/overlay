@@ -4,14 +4,18 @@ import { useWebSocket } from '../../_hooks/useWebsocket';
 
 // Sound map
 const SOUND_IDS = [
+  'BLINK',
   'BOO',
   'DING_DONG',
   'GOTTEM',
   'HELLO',
   'HUH',
+  'HYDRATE',
   'JOKE',
   'NICE_TRY',
   'PROFANITY',
+  'STAND_UP',
+  'STRETCH',
 ];
 
 export default function SoundWidget() {
