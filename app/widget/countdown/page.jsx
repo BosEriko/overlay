@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { Pixelify_Sans } from 'next/font/google';
-import env from '../../_utilities/env';
+import env from '@utilities/env';
 
 const pixelify = Pixelify_Sans({
   subsets: ['latin'],

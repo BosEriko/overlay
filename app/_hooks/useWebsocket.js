@@ -1,6 +1,6 @@
 "use client";
 import { createContext, useContext, useEffect, useState } from 'react';
-import env from "../_utilities/env";
+import env from "@utilities/env";
 
 const WebSocketContext = createContext();
 

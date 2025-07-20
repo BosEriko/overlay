@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useWebSocket } from '../../_hooks/useWebsocket';
 import { Pixelify_Sans } from 'next/font/google';
-import env from '../../_utilities/env';
+import env from '@utilities/env';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faIdCard,
