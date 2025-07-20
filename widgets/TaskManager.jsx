@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useWebSocket } from '@hooks/useWebsocket';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons'; 
 import { faListCheck } from '@fortawesome/free-solid-svg-icons';
@@ -26,8 +25,7 @@ function formatTime(seconds) {
   return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
-export default function TaskManagerWidget() {
-  const { wsData } = useWebSocket();
+export default function TaskManagerWidget({ wsData }) {
   const [timerState, setTimerState] = useState({
     time: 0,
     isPomodoroActive: false,

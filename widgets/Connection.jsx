@@ -1,7 +1,6 @@
 'use client';
-import { useWebSocket } from '@hooks/useWebsocket';
 
-export default function ConnectionWidget() {
+export default function ConnectionWidget({ useWebSocket }) {
   const { isConnected } = useWebSocket();
 
   if (isConnected) return null;

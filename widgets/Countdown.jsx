@@ -13,7 +13,7 @@ const STREAM_START = 20;
 const STREAM_DURATION = 4;
 const STREAM_USERNAME = 'TwisWua';
 
-export default function CountdownWidget() {
+export default function CountdownWidget({ wsData }) {
   const [displayText, setDisplayText] = useState('');
   const [streamIcon, setStreamIcon] = useState('');
 

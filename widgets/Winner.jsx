@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useWebSocket } from '@hooks/useWebsocket';
 import { Pixelify_Sans } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKeyboard } from '@fortawesome/free-solid-svg-icons';
@@ -25,8 +24,7 @@ const Box = ({ children }) => (
   </div>
 );
 
-export default function DetailWidget() {
-  const { wsData } = useWebSocket();
+export default function WinnerWidget({ wsData }) {
   const [firstChatWinner, setFirstChatWinner] = useState(null);
   const [typingWinner, setTypingWinner] = useState(null);
 

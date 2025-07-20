@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useWebSocket } from '@hooks/useWebsocket';
 import { Pixelify_Sans } from 'next/font/google';
 
 const pixelify = Pixelify_Sans({
@@ -8,8 +7,7 @@ const pixelify = Pixelify_Sans({
   weight: ['700']
 });
 
-export default function TypingWidget() {
-  const { wsData } = useWebSocket();
+export default function TypingWidget({ wsData }) {
   const [words, setWords] = useState([]);
   const [idCounter, setIdCounter] = useState(0);
 

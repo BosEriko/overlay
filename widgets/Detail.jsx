@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useWebSocket } from '@hooks/useWebsocket';
 import { Pixelify_Sans } from 'next/font/google';
 import env from '@utilities/env';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -30,8 +29,7 @@ const Box = ({ children }) => (
   </div>
 );
 
-export default function DetailWidget() {
-  const { wsData } = useWebSocket();
+export default function DetailWidget({ wsData }) {
   const [streamDetail, setStreamDetail] = useState(null);
   const [isStreaming, setIsStreaming] = useState(false);
   const [gameData, setGameData] = useState(null);

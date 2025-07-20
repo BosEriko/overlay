@@ -6,7 +6,7 @@ const COUNTDOWN_SCHEDULE = [1, 2, 3, 4, 5];
 const COUNTDOWN_START = 15;
 const COUNTDOWN_DURATION = 1;
 
-export default function GettingStartedWidget() {
+export default function GettingStartedWidget({ wsData }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
