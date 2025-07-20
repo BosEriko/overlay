@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useWebSocket } from '@hooks/useWebsocket';
 import toast, { Toaster } from 'react-hot-toast';
 import { Pixelify_Sans } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -139,9 +138,7 @@ function showToast({ type, message, username, user, emotes }) {
   if (!isChat) playSound();
 }
 
-export default function FeedWidget() {
-  const { wsData } = useWebSocket();
-
+export default function FeedWidget({ wsData }) {
   useEffect(() => {
     if (wsData?.type === 'FEED') {
       showToast({

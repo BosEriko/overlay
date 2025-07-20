@@ -1,9 +1,7 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useWebSocket } from '@hooks/useWebsocket';
 
-export default function BrbWidget() {
-  const { wsData } = useWebSocket();
+export default function CensorWidget({ wsData }) {
   const [isVisible, setIsVisible] = useState(false);
   const boxRef = useRef(null);
   const containerRef = useRef(null);
