@@ -2,15 +2,16 @@
 import { Pixelify_Sans } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitch } from '@fortawesome/free-brands-svg-icons';
+import Screen from '@components/Screen';
 
 const pixelify = Pixelify_Sans({
   subsets: ['latin'],
   weight: ['700']
 });
 
-export default function DesktopWidget({ wsData }) {
+export default function DesktopWidget() {
   return (
-    <div className={`${pixelify.className} h-[1080px] w-[1920px] text-white font-sans flex flex-col overflow-hidden`}>
+    <Screen className={`${pixelify.className} text-white font-sans flex flex-col`}>
       <div className="flex items-center z-20 px-3 pt-3">
         <div className="flex-1">
           <FontAwesomeIcon
@@ -30,6 +31,6 @@ export default function DesktopWidget({ wsData }) {
       <div className="border-10 border-yellow-300 flex-1 w-full flex items-center justify-center w-full h-full border-main z-10">
         {/* Main Scene */}
       </div>
-    </div>
+    </Screen>
   );
 }

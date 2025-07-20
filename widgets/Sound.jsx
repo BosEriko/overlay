@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import Screen from '@components/Screen';
 
 // Sound map
 const SOUND_IDS = [
@@ -47,6 +48,6 @@ export default function SoundWidget({ wsData }) {
   }, [wsData]);
 
   return (
-    <div className="h-[1080px] w-[1920px]"></div>
+    <Screen></Screen>
   );
 }
