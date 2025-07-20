@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import Screen from '@components/Screen';
 import { Pixelify_Sans } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faStar } from '@fortawesome/free-solid-svg-icons';
@@ -152,8 +153,8 @@ export default function FeedWidget({ wsData }) {
   }, [wsData]);
 
   return (
-    <div className="relative pointer-events-none h-[1080px] w-[1920px]">
+    <Screen>
       <Toaster />
-    </div>
+    </Screen>
   );
 }

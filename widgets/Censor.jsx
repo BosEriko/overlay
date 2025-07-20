@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import Screen from '@components/Screen';
 
 export default function CensorWidget({ wsData }) {
   const [isVisible, setIsVisible] = useState(false);
@@ -47,10 +48,10 @@ export default function CensorWidget({ wsData }) {
   if (!isVisible) return null;
 
   return (
-    <div ref={containerRef} className="w-[1920px] h-[1080px] bg-yellow-500 overflow-hidden relative">
+    <Screen ref={containerRef} className="bg-yellow-500">
       <div ref={boxRef} style={{ width: `${boxWidth}px`, height: `${boxHeight}px` }} className="absolute top-0 left-0">
         <img src="/images/profile.png" alt="Profile" className="w-full h-full" />
       </div>
-    </div>
+    </Screen>
   );
 }
