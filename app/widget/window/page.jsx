@@ -1,7 +1,7 @@
 'use client';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitch } from '@fortawesome/free-brands-svg-icons';
-import Window from '../../_components/Window';
+import Window from '@components/Window';
 
 const Icon = () => {
     return (

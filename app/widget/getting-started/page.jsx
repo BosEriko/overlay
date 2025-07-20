@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import Ticker from '../../_components/Ticker';
+import Ticker from '@components/Ticker';
 
 const COUNTDOWN_SCHEDULE = [1, 2, 3, 4, 5];
 const COUNTDOWN_START = 15;

@@ -4,7 +4,7 @@ import { useWebSocket } from '../../_hooks/useWebsocket';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons'; 
 import { faListCheck } from '@fortawesome/free-solid-svg-icons';
-import Window from '../../_components/Window';
+import Window from '@components/Window';
 
 const PomodoroIcon = () => (
   <FontAwesomeIcon
