@@ -21,6 +21,7 @@ Here are the list of widgets that are available:
 
 ## Sources
 - [Background](https://overlay.boseriko.com/source/background)
+- [Foreground](https://overlay.boseriko.com/source/foreground)
 
 ## Custom Window
 You can also create custom windows by doing `node screenshots` on the browser and removing the white background with **Gimp**. Use the [Window](https://overlay.boseriko.com/widget/window) widget for making custom windows.
