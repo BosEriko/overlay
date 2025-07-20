@@ -26,10 +26,10 @@ export default function CensorWidget({ wsData }) {
     const drops = Array.from({ length: columns }).fill(1);
 
     const draw = () => {
-      ctx.fillStyle = 'rgba(253, 224, 71, 0.1)';
+      ctx.fillStyle = '#f0b100';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-      ctx.fillStyle = '#a16207';
+      ctx.fillStyle = '#ffdf20';
       ctx.font = `${fontSize}px monospace`;
 
       for (let i = 0; i < drops.length; i++) {
