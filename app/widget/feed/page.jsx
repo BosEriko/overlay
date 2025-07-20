@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useWebSocket } from '../../_hooks/useWebsocket';
+import { useWebSocket } from '@hooks/useWebsocket';
 import toast, { Toaster } from 'react-hot-toast';
 import { Pixelify_Sans } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

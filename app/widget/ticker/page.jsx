@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useWebSocket } from '../../_hooks/useWebsocket';
+import { useWebSocket } from '@hooks/useWebsocket';
 import Ticker from '@components/Ticker';
 
 export default function TickerWidget() {

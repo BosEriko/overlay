@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
-import { useWebSocket } from '../../_hooks/useWebsocket';
+import { useWebSocket } from '@hooks/useWebsocket';
 import { Pixelify_Sans } from 'next/font/google';
 
 const pixelify = Pixelify_Sans({

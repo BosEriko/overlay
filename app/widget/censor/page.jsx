@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
-import { useWebSocket } from '../../_hooks/useWebsocket';
+import { useWebSocket } from '@hooks/useWebsocket';
 
 export default function BrbWidget() {
   const { wsData } = useWebSocket();

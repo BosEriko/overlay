@@ -1,4 +1,4 @@
-import { WebSocketProvider } from './_hooks/useWebsocket';
+import { WebSocketProvider } from '@hooks/useWebsocket';
 import './globals.css';
 
 export default function RootLayout({ children }) {

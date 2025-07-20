@@ -1,6 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { useWebSocket } from '../../_hooks/useWebsocket';
+import { useWebSocket } from '@hooks/useWebsocket';
 
 // Sound map
 const SOUND_IDS = [

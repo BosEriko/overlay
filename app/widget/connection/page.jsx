@@ -1,5 +1,5 @@
 'use client';
-import { useWebSocket } from '../../_hooks/useWebsocket';
+import { useWebSocket } from '@hooks/useWebsocket';
 
 export default function ConnectionWidget() {
   const { isConnected } = useWebSocket();
