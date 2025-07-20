@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons'; 
 import { faListCheck } from '@fortawesome/free-solid-svg-icons';
 import Window from '@components/Window';
+import Screen from '@components/Screen';
 
 const PomodoroIcon = () => (
   <FontAwesomeIcon
@@ -79,7 +80,7 @@ export default function TaskManagerWidget({ wsData }) {
   const hasMore = todoState.todos.length > 5;
 
   return (
-    <div className="h-[1080px] w-[1920px] relative">
+    <Screen>
       <div className="absolute right-[17px] top-[66px] flex flex-col gap-[10px]">
         { isPomodoroVisible && <Window title={message} icon={PomodoroIcon} width="400px" height="auto">
             <div
@@ -110,6 +111,6 @@ export default function TaskManagerWidget({ wsData }) {
           </div>
         </Window> }
       </div>
-    </div>
+    </Screen>
   );
 }

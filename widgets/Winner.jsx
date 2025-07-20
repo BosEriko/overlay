@@ -4,6 +4,7 @@ import { Pixelify_Sans } from 'next/font/google';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKeyboard } from '@fortawesome/free-solid-svg-icons';
 import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
+import Screen from '@components/Screen';
 
 const pixelify = Pixelify_Sans({
   subsets: ['latin'],
@@ -38,15 +39,17 @@ export default function WinnerWidget({ wsData }) {
   if (!firstChatWinner && !typingWinner) return null;
 
   return (
-    <Container>
-      { firstChatWinner && <Box>
-        <FontAwesomeIcon icon={faCommentDots} className="text-2xl text-yellow-700" />
-        <div>{firstChatWinner}</div>
-      </Box> }
-      { typingWinner && <Box>
-        <FontAwesomeIcon icon={faKeyboard} className="text-2xl text-yellow-700" />
-        <div>{typingWinner.winner} ({typingWinner.score})</div>
-      </Box> }
-    </Container>
+    <Screen>
+      <Container>
+        { firstChatWinner && <Box>
+          <FontAwesomeIcon icon={faCommentDots} className="text-2xl text-yellow-700" />
+          <div>{firstChatWinner}</div>
+        </Box> }
+        { typingWinner && <Box>
+          <FontAwesomeIcon icon={faKeyboard} className="text-2xl text-yellow-700" />
+          <div>{typingWinner.winner} ({typingWinner.score})</div>
+        </Box> }
+      </Container>
+    </Screen>
   );
 }

@@ -18,7 +18,7 @@ export default function ForegroundSource() {
     <div>
       <SoundWidget wsData={wsData} />
       <DesktopWidget />
-      <CountdownWidget wsData={wsData} />
+      <CountdownWidget />
       <DetailWidget wsData={wsData} />
       <WinnerWidget wsData={wsData} />
       <TaskManagerWidget wsData={wsData} />

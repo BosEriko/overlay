@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { Pixelify_Sans } from 'next/font/google';
+import Screen from '@components/Screen';
 
 const pixelify = Pixelify_Sans({
   subsets: ['latin'],
@@ -32,7 +33,7 @@ export default function TypingWidget({ wsData }) {
   }, [wsData]);
 
   return (
-    <div className="h-[1080px] w-[1920px]">
+    <Screen>
       {words.map(word => (
         <div
           key={word.id}
@@ -52,6 +53,6 @@ export default function TypingWidget({ wsData }) {
           100% { top: calc(100vh + 60px); opacity: 0.7; transform: scale(1.1); }
         }
       `}</style>
-    </div>
+    </Screen>
   );
 }

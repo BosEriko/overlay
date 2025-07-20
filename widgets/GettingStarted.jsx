@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Ticker from '@components/Ticker';
+import Screen from '@components/Screen';
 
 const COUNTDOWN_SCHEDULE = [1, 2, 3, 4, 5];
 const COUNTDOWN_START = 15;
@@ -29,5 +30,9 @@ export default function GettingStartedWidget({ wsData }) {
 
   if (!isVisible) return null;
 
-  return <Ticker message="Getting Started" />;
+  return (
+    <Screen>
+      <Ticker message="Getting Started" />
+    </Screen>
+  );
 }

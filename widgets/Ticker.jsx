@@ -1,6 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import Ticker from '@components/Ticker';
+import Screen from '@components/Screen';
 
 export default function TickerWidget({ wsData }) {
   const [message, setMessage] = useState('');
@@ -15,5 +16,9 @@ export default function TickerWidget({ wsData }) {
 
   if (!isVisible) return null;
 
-  return <Ticker message={message} />;
+  return (
+    <Screen>
+      <Ticker message={message} />
+    </Screen>
+  );
 }

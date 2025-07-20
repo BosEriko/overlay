@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Pixelify_Sans } from 'next/font/google';
 import env from '@utilities/env';
+import Screen from '@components/Screen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faIdCard,
@@ -85,11 +86,13 @@ export default function DetailWidget({ wsData }) {
   }
 
   return (
-    <Container>
-      <Box>
-        <FontAwesomeIcon icon={faGamepad} className="text-2xl text-yellow-700" />
-        <div>{streamDetail?.game_name}</div>
-      </Box>
-    </Container>
+    <Screen>
+      <Container>
+        <Box>
+          <FontAwesomeIcon icon={faGamepad} className="text-2xl text-yellow-700" />
+          <div>{streamDetail?.game_name}</div>
+        </Box>
+      </Container>
+    </Screen>
   );
 }
