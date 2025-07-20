@@ -1,5 +1,5 @@
 'use client';
-import SoundWidget from "@widgets/sound";
+import SoundWidget from "@widgets/Sound";
 import { useWebSocket } from '@hooks/useWebsocket';
 
 export default function ForegroundSource() {

@@ -1,6 +1,6 @@
 'use client';
-import FeedWidget from "@widgets/feed";
-import CensorWidget from "@widgets/censor";
+import FeedWidget from "@widgets/Feed";
+import CensorWidget from "@widgets/Censor";
 import { useWebSocket } from '@hooks/useWebsocket';
 
 export default function BackgroundSource() {
