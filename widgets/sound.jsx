@@ -1,6 +1,5 @@
 'use client';
 import { useEffect, useRef } from 'react';
-import { useWebSocket } from '@hooks/useWebsocket';
 
 // Sound map
 const SOUND_IDS = [
@@ -19,8 +18,7 @@ const SOUND_IDS = [
   'STRETCH',
 ];
 
-export default function SoundWidget() {
-  const { wsData } = useWebSocket();
+export default function SoundWidget({ wsData }) {
   const audioRefs = useRef({});
 
   // Preload all sounds once

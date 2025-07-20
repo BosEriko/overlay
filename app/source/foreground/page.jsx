@@ -1,5 +1,5 @@
-
 'use client';
+import SoundWidget from "@widgets/sound";
 import { useWebSocket } from '@hooks/useWebsocket';
 
 export default function ForegroundSource() {
@@ -7,7 +7,7 @@ export default function ForegroundSource() {
 
   return (
     <div>
-      {/* <SoundWidget wsData={wsData} /> */}
+      <SoundWidget wsData={wsData} />
       {/* <DesktopWidget wsData={wsData} /> */}
       {/* <CountdownWidget wsData={wsData} /> */}
       {/* <DetailWidget wsData={wsData} /> */}

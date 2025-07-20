@@ -13,7 +13,6 @@ Here are the list of widgets that are available:
 - [Desktop](https://overlay.boseriko.com/widget/desktop)
 - [Detail](https://overlay.boseriko.com/widget/detail)
 - [Getting Started](https://overlay.boseriko.com/widget/getting-started)
-- [Sound](https://overlay.boseriko.com/widget/sound)
 - [Task Manager](https://overlay.boseriko.com/widget/task-manager)
 - [Ticker](https://overlay.boseriko.com/widget/ticker)
 - [Typing](https://overlay.boseriko.com/widget/typing)
