@@ -85,6 +85,32 @@ export default function DetailWidget({ wsData }) {
     );
   }
 
+  if (streamDetail?.game_name === 'Fortnite') {
+    return (
+      <Screen>
+        <Container>
+          <Box>
+            <FontAwesomeIcon icon={faIdCard} className="text-2xl text-yellow-700" />
+            <div>Username: BosEriko</div>
+          </Box>
+        </Container>
+      </Screen>
+    );
+  }
+
+  if (streamDetail?.game_name === 'Wuthering Waves') {
+    return (
+      <Screen>
+        <Container>
+          <Box>
+            <FontAwesomeIcon icon={faIdCard} className="text-2xl text-yellow-700" />
+            <div>User ID: 905559553</div>
+          </Box>
+        </Container>
+      </Screen>
+    );
+  }
+
   return (
     <Screen>
       <Container>
