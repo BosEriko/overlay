@@ -1,5 +1,4 @@
 'use client';
-import MusicWidget from "@widgets/Music";
 import SoundWidget from "@widgets/Sound";
 import DesktopWidget from "@widgets/Desktop";
 import CountdownWidget from "@widgets/Countdown";
@@ -17,7 +16,6 @@ export default function ForegroundSource() {
 
   return (
     <div>
-      <MusicWidget wsData={wsData} />
       <SoundWidget wsData={wsData} />
       <DesktopWidget />
       <CountdownWidget />
