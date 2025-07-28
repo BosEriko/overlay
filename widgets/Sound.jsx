@@ -48,6 +48,6 @@ export default function SoundWidget({ wsData }) {
   }, [wsData]);
 
   return (
-    <Screen></Screen>
+    <Screen />
   );
 }
