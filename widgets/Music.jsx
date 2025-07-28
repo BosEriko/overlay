@@ -5,6 +5,7 @@ import Screen from '@components/Screen';
 // Music map
 const MUSIC_IDS = [
   'JEREMY_BLAKE_POWERUP',
+  'THE_GRAND_AFFAIR_COUPE',
 ];
 
 export default function MusicWidget({ wsData }) {
