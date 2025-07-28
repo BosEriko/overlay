@@ -24,7 +24,15 @@ export default function MusicWidget({ wsData }) {
 
   // Play music when alert received
   useEffect(() => {
-    if (wsData?.type === 'MUSIC' && wsData.id) {
+    if (wsData?.type === 'MUSIC') {
+      if (!wsData.id || !wsData.isVisible) {
+        Object.values(audioRefs.current).forEach((audio) => {
+          audio.pause();
+          audio.currentTime = 0;
+        });
+        return;
+      }
+
       const audio = audioRefs.current[wsData.id];
 
       if (!audio) {
@@ -32,24 +40,17 @@ export default function MusicWidget({ wsData }) {
         return;
       }
 
-      if (wsData.isVisible) {
-        // Stop all others first
-        Object.entries(audioRefs.current).forEach(([id, a]) => {
-          if (id !== wsData.id) {
-            a.pause();
-            a.currentTime = 0;
-          }
-        });
+      Object.entries(audioRefs.current).forEach(([id, a]) => {
+        if (id !== wsData.id) {
+          a.pause();
+          a.currentTime = 0;
+        }
+      });
 
-        // Play selected
-        audio.currentTime = 0;
-        audio.play().catch((err) =>
-          console.warn(`🔇 Couldn't play ${wsData.id}:`, err)
-        );
-      } else {
-        audio.pause();
-        audio.currentTime = 0;
-      }
+      audio.currentTime = 0;
+      audio.play().catch((err) =>
+        console.warn(`🔇 Couldn't play ${wsData.id}:`, err)
+      );
     }
   }, [wsData]);
 
