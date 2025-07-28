@@ -12,15 +12,18 @@ const MUSIC_ID = 'KEVIN_MACLEOD_8BIT_DUNGEON_BOSS';
 export default function GettingStartedWidget() {
   const [isVisible, setIsVisible] = useState(false);
   const audioRef = useRef(null);
+  const fadeIntervalRef = useRef(null);
 
   useEffect(() => {
     const audio = new Audio(`/sounds/music/${MUSIC_ID}.mp3`);
     audio.loop = true;
     audio.preload = 'auto';
+    audio.volume = 1;
     audio.load();
     audioRef.current = audio;
 
     return () => {
+      clearInterval(fadeIntervalRef.current);
       audio.pause();
       audioRef.current = null;
     };
@@ -47,16 +50,33 @@ export default function GettingStartedWidget() {
     const audio = audioRef.current;
     if (!audio) return;
 
+    clearInterval(fadeIntervalRef.current);
+
     if (isVisible) {
+      audio.volume = 0;
       audio.currentTime = 0;
-      audio
-        .play()
-        .catch((err) =>
-          console.warn(`🔇 Couldn't play ${MUSIC_ID}:`, err)
-        );
+      audio.play().catch((err) =>
+        console.warn(`🔇 Couldn't play ${MUSIC_ID}:`, err)
+      );
+      fadeIntervalRef.current = setInterval(() => {
+        if (audio.volume < 0.95) {
+          audio.volume = Math.min(1, audio.volume + 0.05);
+        } else {
+          audio.volume = 1;
+          clearInterval(fadeIntervalRef.current);
+        }
+      }, 100);
     } else {
-      audio.pause();
-      audio.currentTime = 0;
+      fadeIntervalRef.current = setInterval(() => {
+        if (audio.volume > 0.05) {
+          audio.volume = Math.max(0, audio.volume - 0.05);
+        } else {
+          audio.volume = 0;
+          audio.pause();
+          audio.currentTime = 0;
+          clearInterval(fadeIntervalRef.current);
+        }
+      }, 100);
     }
   }, [isVisible]);
 
