@@ -19,7 +19,7 @@ const DefaultIcon = () => {
 
 export default function Window({ children, title = "Window", icon: Icon = DefaultIcon, width = "500px", height = "300px"}) {
   return (
-    <div className={`${pixelify.className} text-white flex flex-col overflow-hidden shadow-xl`} style={{ width, height, borderRadius: '25px' }}>
+    <div className={`${pixelify.className} text-white flex flex-col overflow-hidden shadow-xl rounded-[25px]`} style={{ width, height }}>
       <div className="flex items-center z-20 px-3 pt-3">
         <div className="flex-1">
             <Icon />
