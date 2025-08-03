@@ -3,6 +3,11 @@
 const env = {
   websocket: process.env.NEXT_PUBLIC_WEBSOCKET,
   server: process.env.NEXT_PUBLIC_SERVER,
+  stream: {
+    start: process.env.NEXT_STREAM_START,
+    duration: process.env.NEXT_STREAM_DURATION,
+    days: process.env.NEXT_STREAM_DAYS
+  }
 }
 
 export default env;

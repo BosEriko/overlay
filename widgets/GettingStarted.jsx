@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef, useState } from 'react';
+import env from "@utilities/env";
 import Ticker from '@components/Ticker';
 import Screen from '@components/Screen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -11,8 +12,8 @@ const pixelify = Pixelify_Sans({
   weight: ['700']
 });
 
-const COUNTDOWN_SCHEDULE = [1, 2, 3, 4, 5];
-const COUNTDOWN_START = 15;
+const COUNTDOWN_SCHEDULE = env.stream.days.split(',').map((day) => ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].indexOf(day));
+const COUNTDOWN_START = Number(env.stream.start) - 1;
 const COUNTDOWN_DURATION = 1;
 
 const MUSIC_ID = 'KEVIN_MACLEOD_8BIT_DUNGEON_BOSS';
