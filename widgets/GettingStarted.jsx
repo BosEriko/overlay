@@ -2,6 +2,12 @@
 import { useEffect, useRef, useState } from 'react';
 import Ticker from '@components/Ticker';
 import Screen from '@components/Screen';
+import { Pixelify_Sans } from 'next/font/google';
+
+const pixelify = Pixelify_Sans({
+  subsets: ['latin'],
+  weight: ['700']
+});
 
 const COUNTDOWN_SCHEDULE = [1, 2, 3, 4, 5];
 const COUNTDOWN_START = 15;
@@ -11,8 +17,10 @@ const MUSIC_ID = 'KEVIN_MACLEOD_8BIT_DUNGEON_BOSS';
 
 export default function GettingStartedWidget() {
   const [isVisible, setIsVisible] = useState(false);
+  const [remainingTime, setRemainingTime] = useState(0);
   const audioRef = useRef(null);
   const fadeIntervalRef = useRef(null);
+  const countdownIntervalRef = useRef(null);
 
   useEffect(() => {
     const audio = new Audio(`/sounds/music/${MUSIC_ID}.mp3`);
@@ -24,6 +32,7 @@ export default function GettingStartedWidget() {
 
     return () => {
       clearInterval(fadeIntervalRef.current);
+      clearInterval(countdownIntervalRef.current);
       audio.pause();
       audioRef.current = null;
     };
@@ -38,7 +47,16 @@ export default function GettingStartedWidget() {
       const isScheduledDay = COUNTDOWN_SCHEDULE.includes(currentDay);
       const isWithinTime = currentHour >= COUNTDOWN_START && currentHour < COUNTDOWN_START + COUNTDOWN_DURATION;
 
-      setIsVisible(isScheduledDay && isWithinTime);
+      if (isScheduledDay && isWithinTime) {
+        const end = new Date();
+        end.setHours(COUNTDOWN_START + COUNTDOWN_DURATION, 0, 0, 0);
+        const diff = Math.floor((end - now) / 1000);
+        setRemainingTime(diff);
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+        setRemainingTime(0);
+      }
     };
 
     checkTime();
@@ -80,11 +98,37 @@ export default function GettingStartedWidget() {
     }
   }, [isVisible]);
 
+  useEffect(() => {
+    clearInterval(countdownIntervalRef.current);
+
+    if (isVisible && remainingTime > 0) {
+      countdownIntervalRef.current = setInterval(() => {
+        setRemainingTime((t) => {
+          if (t <= 1) {
+            setIsVisible(false);
+            return 0;
+          }
+          return t - 1;
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(countdownIntervalRef.current);
+  }, [isVisible, remainingTime]);
+
   if (!isVisible) return null;
+
+  const minutes = Math.floor(remainingTime / 60);
+  const seconds = remainingTime % 60;
 
   return (
     <Screen>
-      <Ticker message="Getting Started" />
+      <div className="relative z-50 w-full h-full">
+        <div className="z-10"><Ticker message="Getting Started" /></div>
+        <div className="absolute top-0 left-0 w-[1920px] h-[1080px] flex items-center justify-center text-4xl font-bold z-20">
+          <div className={`${pixelify.className} text-yellow-700 bg-yellow-300 px-10 py-5 text-[100px] w-[500px] text-center border border-yellow-700 border-[10px] rounded-full`}>{minutes}:{seconds.toString().padStart(2, '0')}</div>
+        </div>
+      </div>
     </Screen>
   );
 }
