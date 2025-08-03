@@ -131,7 +131,7 @@ export default function GettingStartedWidget() {
           <Ticker message="Getting Started" />
         </div>
         <div className="absolute top-0 left-0 w-[1920px] h-[1080px] flex items-center justify-center text-4xl font-bold z-20">
-          <div className={`${pixelify.className} text-yellow-700 bg-yellow-300 px-10 py-5 w-[470px] text-center border border-yellow-700 border-[10px] rounded-full flex items-baseline justify-center gap-[30px]`}>
+          <div className={`${pixelify.className} text-yellow-700 bg-yellow-300 px-10 py-5 w-[470px] text-center border border-yellow-700 border-[10px] rounded-[25px] flex items-baseline justify-center gap-[30px]`}>
             <div className="text-[75px]"><FontAwesomeIcon icon={faClock} /></div>
             <div className="flex-1 text-[100px]">{minutes}:{seconds.toString().padStart(2, '0')}</div>
           </div>
