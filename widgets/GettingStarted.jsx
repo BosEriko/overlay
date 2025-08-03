@@ -2,6 +2,8 @@
 import { useEffect, useRef, useState } from 'react';
 import Ticker from '@components/Ticker';
 import Screen from '@components/Screen';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { Pixelify_Sans } from 'next/font/google';
 
 const pixelify = Pixelify_Sans({
@@ -124,9 +126,14 @@ export default function GettingStartedWidget() {
   return (
     <Screen>
       <div className="relative z-50 w-full h-full">
-        <div className="z-10"><Ticker message="Getting Started" /></div>
+        <div className="z-10">
+          <Ticker message="Getting Started" />
+        </div>
         <div className="absolute top-0 left-0 w-[1920px] h-[1080px] flex items-center justify-center text-4xl font-bold z-20">
-          <div className={`${pixelify.className} text-yellow-700 bg-yellow-300 px-10 py-5 text-[100px] w-[500px] text-center border border-yellow-700 border-[10px] rounded-full`}>{minutes}:{seconds.toString().padStart(2, '0')}</div>
+          <div className={`${pixelify.className} text-yellow-700 bg-yellow-300 px-10 py-5 w-[470px] text-center border border-yellow-700 border-[10px] rounded-full flex items-baseline justify-center gap-[30px]`}>
+            <div className="text-[75px]"><FontAwesomeIcon icon={faClock} /></div>
+            <div className="flex-1 text-[100px]">{minutes}:{seconds.toString().padStart(2, '0')}</div>
+          </div>
         </div>
       </div>
     </Screen>
