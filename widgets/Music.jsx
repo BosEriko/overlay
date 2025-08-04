@@ -58,7 +58,7 @@ export default function MusicWidget({ wsData }) {
         }, 100);
       };
 
-      if (!wsData.id || !wsData.isVisible) {
+      if (!wsData.id || !wsData.isPlaying) {
         Object.values(audioRefs.current).forEach((audio) => {
           fadeOut(audio);
         });
