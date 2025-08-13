@@ -45,7 +45,7 @@ export default function DetailWidget({ wsData }) {
   useEffect(() => {
     const fetchTetrioData = async () => {
       try {
-        const res = await fetch(`${env.server}/api/profile/tetrio?username=boseriko`);
+        const res = await fetch(`${env.server}/api/detail/tetrio?username=boseriko`);
         const json = await res.json();
         if (json?.username) setGameData(json);
       } catch (error) {

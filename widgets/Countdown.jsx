@@ -21,7 +21,7 @@ export default function CountdownWidget() {
   useEffect(() => {
     const fetchTwitchDetails = async () => {
       try {
-        const res = await fetch(`${env.server}/api/details?username=${STREAM_USERNAME}`);
+        const res = await fetch(`${env.server}/api/detail/twitch?username=${STREAM_USERNAME}`);
         const data = await res.json();
         if (data?.profile_image_url) {
           setStreamIcon(data.profile_image_url);
