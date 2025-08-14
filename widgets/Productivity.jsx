@@ -131,17 +131,17 @@ export default function ProductivityWidget({ wsData }) {
   return (
     <Screen>
       <div className="absolute right-[17px] top-[66px] flex flex-col gap-[10px] items-end">
-        { isMusicPlayerVisible && <div className="flex items-center gap-4 p-1 bg-yellow-300 rounded-[10px] shadow-xl mx-auto border-[5px] border-yellow-500">
+        { isMusicPlayerVisible && <div className="flex items-center gap-4 p-2 bg-yellow-300 rounded-[10px] shadow-xl mx-auto border-[5px] border-yellow-500">
           <img
             src={musicDetail.albumCoverUrl}
             alt={musicDetail.title}
-            className="w-20 h-20 rounded-[5px] object-cover shadow-md"
+            className="w-20 h-20 rounded-[5px] object-cover border-[3px] border-yellow-500 bg-yellow-500"
           />
           <div className="flex flex-col flex-1">
-            <h2 className={`${pixelify.className} text-2xl font-bold text-yellow-800 truncate w-[225px]`}>
+            <h2 className={`${pixelify.className} text-2xl font-bold text-yellow-800 truncate w-[250px]`}>
               {musicDetail.title}
             </h2>
-            <p className="text-sm text-yellow-700 font-bold truncate w-[225px]">
+            <p className="text-sm text-yellow-700 font-bold truncate w-[250px]">
               {musicDetail.singer}
             </p>
 
