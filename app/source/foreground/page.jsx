@@ -3,6 +3,7 @@ import MusicWidget from "@widgets/Music";
 import SoundWidget from "@widgets/Sound";
 import DesktopWidget from "@widgets/Desktop";
 import CountdownWidget from "@widgets/Countdown";
+import PlayerWidget from "@widgets/Player";
 import DetailWidget from "@widgets/Detail";
 import WinnerWidget from "@widgets/Winner";
 import TaskManagerWidget from "@widgets/TaskManager";
@@ -21,6 +22,7 @@ export default function ForegroundSource() {
       <SoundWidget wsData={wsData} />
       <DesktopWidget />
       <CountdownWidget />
+      <PlayerWidget wsData={wsData} />
       <DetailWidget wsData={wsData} />
       <WinnerWidget wsData={wsData} />
       <TaskManagerWidget wsData={wsData} />
