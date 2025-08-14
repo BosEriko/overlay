@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Pixelify_Sans } from 'next/font/google';
 import Screen from '@components/Screen';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -13,11 +13,51 @@ const pixelify = Pixelify_Sans({
 export default function PlayerWidget({ wsData }) {
   const [musicDetail, setMusicDetail] = useState(null);
 
+  const intervalRef = useRef(null);
+
   useEffect(() => {
     if (wsData?.type === 'MUSIC_DETAIL') {
       setMusicDetail(wsData.musicDetails);
     }
   }, [wsData]);
+
+  useEffect(() => {
+    if (!musicDetail) return;
+
+    // clear any old timer
+    clearInterval(intervalRef.current);
+
+    if (musicDetail.isPlaying) {
+      intervalRef.current = setInterval(() => {
+        setMusicDetail(prev => {
+          if (!prev) return prev;
+
+          // parse times (MM:SS → total seconds)
+          const [cm, cs] = prev.currentTime.split(':').map(Number);
+          const [lm, ls] = prev.length.split(':').map(Number);
+
+          const currentSec = cm * 60 + cs + 1;
+          const lengthSec = lm * 60 + ls;
+
+          if (currentSec >= lengthSec) {
+            return { ...prev, currentTime: prev.length, progress: 100 };
+          }
+
+          // format back to MM:SS
+          const mm = Math.floor(currentSec / 60);
+          const ss = String(currentSec % 60).padStart(2, '0');
+
+          return {
+            ...prev,
+            currentTime: `${mm}:${ss}`,
+            progress: (currentSec / lengthSec) * 100,
+          };
+        });
+      }, 1000);
+    }
+
+    return () => clearInterval(intervalRef.current);
+  }, [musicDetail?.isPlaying]);
 
   if (!musicDetail) return null;
 
@@ -40,7 +80,7 @@ export default function PlayerWidget({ wsData }) {
 
             <div className="w-full h-2 bg-yellow-400 rounded-full mt-2 overflow-hidden">
               <div
-                className="h-2 bg-yellow-800 transition-all duration-200 ease-linear"
+                className="h-2 bg-yellow-800 transition-all duration-500 ease-linear"
                 style={{ width: `${musicDetail.progress}%` }}
               />
             </div>
