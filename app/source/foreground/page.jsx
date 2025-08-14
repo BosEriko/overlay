@@ -5,7 +5,7 @@ import DesktopWidget from "@widgets/Desktop";
 import CountdownWidget from "@widgets/Countdown";
 import DetailWidget from "@widgets/Detail";
 import WinnerWidget from "@widgets/Winner";
-import TaskManagerWidget from "@widgets/TaskManager";
+import ProductivityWidget from "@widgets/Productivity";
 import ConnectionWidget from "@widgets/Connection";
 import TypingWidget from "@widgets/Typing";
 import TickerWidget from "@widgets/Ticker";
@@ -23,7 +23,7 @@ export default function ForegroundSource() {
       <CountdownWidget />
       <DetailWidget wsData={wsData} />
       <WinnerWidget wsData={wsData} />
-      <TaskManagerWidget wsData={wsData} />
+      <ProductivityWidget wsData={wsData} />
       <ConnectionWidget useWebSocket={useWebSocket} />
       <TypingWidget wsData={wsData} />
       <TickerWidget wsData={wsData} />

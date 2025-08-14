@@ -32,7 +32,7 @@ function formatTime(seconds) {
   return `${String(mins).padStart(2, '0')}:${String(secs).padStart(2, '0')}`;
 }
 
-export default function TaskManagerWidget({ wsData }) {
+export default function ProductivityWidget({ wsData }) {
   const [musicDetail, setMusicDetail] = useState(null);
   const [timerState, setTimerState] = useState({
     time: 0,
