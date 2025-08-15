@@ -3,8 +3,7 @@ import { useEffect, useState, useRef } from 'react';
 import { Pixelify_Sans } from 'next/font/google';
 import { useWebSocket } from '@hooks/useWebsocket';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpotify } from '@fortawesome/free-brands-svg-icons';
-import { faCheck, faClock, faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faClock, faPlay, faPause, faMusic, faHourglassHalf } from '@fortawesome/free-solid-svg-icons';
 
 const pixelify = Pixelify_Sans({
   subsets: ['latin'],
@@ -91,114 +90,112 @@ export default function MusicQueuePublic() {
         statusIcon = faCheck;
         statusLabel = 'Played';
         break;
-      default: // QUEUED
+      default:
         statusIcon = faClock;
         statusLabel = 'Pending';
     }
 
+    const Wrapper = item.music.spotifyUrl ? 'a' : 'div';
+
     return (
-      <div className="flex items-center gap-4 p-3 bg-yellow-300 rounded-[10px] shadow-xl border-[4px] border-yellow-500">
-        {/* Album Cover */}
-        <img
-          src={item.music.albumCoverUrl}
-          alt={item.music.title}
-          className="w-16 h-16 rounded-[5px] object-cover border-[3px] border-yellow-500 bg-yellow-500"
-        />
-
-        {/* Song Info */}
-        <div className="flex-1">
-          <p className={`${pixelify.className} font-bold text-yellow-900 truncate`}>
-            {item.music.title}
-          </p>
-          <p className="text-yellow-700 text-sm font-bold truncate">
-            {item.music.singer}
-          </p>
-          <p className="text-yellow-600 text-xs">{item.music.length}</p>
-          <p className="text-yellow-800 text-xs italic">Added by {item.username}</p>
+      <Wrapper
+        href={item.music.spotifyUrl || undefined}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <div className="flex items-center gap-4 p-3 bg-yellow-300 rounded-[10px] shadow-xl border-[4px] border-yellow-500 cursor-pointer transform transition-transform duration-200 hover:scale-105">
+          <img
+            src={item.music.albumCoverUrl}
+            alt={item.music.title}
+            className="w-16 h-16 rounded-[5px] object-cover border-[3px] border-yellow-500 bg-yellow-500"
+          />
+          <div className="flex-1">
+            <p className={`${pixelify.className} font-bold text-yellow-900 truncate`}>
+              {item.music.title}
+            </p>
+            <p className="text-yellow-700 text-sm font-bold truncate">
+              {item.music.singer}
+            </p>
+            <p className="text-yellow-600 text-xs">{item.music.length}</p>
+            <p className="text-yellow-800 text-xs italic">Added by {item.username}</p>
+          </div>
+          <span className="flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-yellow-800 text-yellow-200">
+            <FontAwesomeIcon icon={statusIcon} />
+            {statusLabel}
+          </span>
         </div>
-
-        {/* Status */}
-        <span className="flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-yellow-800 text-yellow-200">
-          <FontAwesomeIcon icon={statusIcon} />
-          {statusLabel}
-        </span>
-
-        {/* Spotify Link */}
-        {item.music.spotifyUrl && (
-          <a
-            href={item.music.spotifyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-green-600 hover:text-green-500 ml-2"
-          >
-            <FontAwesomeIcon icon={faSpotify} size="lg" />
-          </a>
-        )}
-      </div>
+      </Wrapper>
     );
   };
 
-  const NowPlayingCard = ({ detail }) => (
-    <div className="flex items-center gap-4 p-3 bg-yellow-300 rounded-[10px] shadow-xl border-[5px] border-yellow-500">
-      {/* Album Cover */}
-      <img
-        src={detail.albumCoverUrl}
-        alt={detail.title}
-        className="w-20 h-20 rounded-[5px] object-cover border-[3px] border-yellow-500 bg-yellow-500"
-      />
+  const NowPlayingCard = ({ detail }) => {
+    const Wrapper = detail.spotifyUrl ? 'a' : 'div';
 
-      {/* Song Info + Progress */}
-      <div className="flex flex-col flex-1">
-        <p className={`${pixelify.className} text-xl font-bold text-yellow-900 truncate`}>
-          {detail.title}
-        </p>
-        <p className="text-sm text-yellow-700 font-bold truncate">{detail.singer}</p>
-
-        <div className="w-full h-2 bg-yellow-400 rounded-full mt-2 overflow-hidden">
-          <div
-            className="h-2 bg-yellow-800 transition-all duration-500 ease-linear"
-            style={{ width: `${detail.progress}%` }}
+    return (
+      <Wrapper
+        href={detail.spotifyUrl || undefined}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+      >
+        <div className="flex items-center gap-4 p-3 bg-yellow-300 rounded-[10px] shadow-xl border-[5px] border-yellow-500 cursor-pointer transform transition-transform duration-200 hover:scale-105">
+          <img
+            src={detail.albumCoverUrl}
+            alt={detail.title}
+            className="w-20 h-20 rounded-[5px] object-cover border-[3px] border-yellow-500 bg-yellow-500"
           />
+          <div className="flex flex-col flex-1">
+            <p className={`${pixelify.className} text-xl font-bold text-yellow-900 truncate`}>
+              {detail.title}
+            </p>
+            <p className="text-sm text-yellow-700 font-bold truncate">{detail.singer}</p>
+            <div className="w-full h-2 bg-yellow-400 rounded-full mt-2 overflow-hidden">
+              <div
+                className="h-2 bg-yellow-800 transition-all duration-500 ease-linear"
+                style={{ width: `${detail.progress}%` }}
+              />
+            </div>
+            <div className="flex justify-between text-xs text-yellow-700 font-bold mt-1">
+              <span>{detail.currentTime}</span>
+              <span>{detail.length}</span>
+            </div>
+          </div>
+          <div className="flex flex-col items-center gap-2">
+            <span className="flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-yellow-800 text-yellow-200">
+              <FontAwesomeIcon icon={detail.isPlaying ? faPlay : faPause} />
+              {detail.isPlaying ? 'Playing' : 'Paused'}
+            </span>
+          </div>
         </div>
-
-        <div className="flex justify-between text-xs text-yellow-700 font-bold mt-1">
-          <span>{detail.currentTime}</span>
-          <span>{detail.length}</span>
-        </div>
-      </div>
-
-      {/* Controls + Spotify */}
-      <div className="flex flex-col items-center gap-2">
-        <span className="flex items-center gap-1 text-xs px-2 py-1 rounded-full bg-yellow-800 text-yellow-200">
-          <FontAwesomeIcon icon={detail.isPlaying ? faPlay : faPause} />
-          {detail.isPlaying ? 'Playing' : 'Paused'}
-        </span>
-
-        {detail.spotifyUrl && (
-          <a
-            href={detail.spotifyUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-green-600 hover:text-green-500"
-          >
-            <FontAwesomeIcon icon={faSpotify} size="lg" />
-          </a>
-        )}
-      </div>
-    </div>
-  );
+      </Wrapper>
+    );
+  };
 
   return (
-    <div>
-      <div className="container mx-auto p-4 space-y-6">
+    <div
+      className="relative min-h-screen"
+      style={{
+        backgroundImage: `url('https://i.imgur.com/HJbSDHE.jpeg')`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundAttachment: 'fixed'
+      }}
+    >
+      {/* Blur overlay (sits above bg, below content) */}
+      <div className="absolute inset-0 bg-black/40 backdrop-blur-md pointer-events-none" />
+
+      {/* Content */}
+      <div className="relative z-10 container mx-auto p-4 space-y-6">
         {/* Playing */}
         <section>
-          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-900 mb-3 drop-shadow-[1px_1px_2px_white]`}>
-            🎵 Now Playing
+          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center gap-2`}>
+            <FontAwesomeIcon icon={faMusic} className="text-yellow-200" />
+            Now Playing
           </h2>
           <div className="space-y-3">
             {!musicDetail ? (
-              <p className="text-yellow-700 italic">No song is playing right now.</p>
+              <p className="text-yellow-100/80 italic">No song is playing right now.</p>
             ) : (
               <NowPlayingCard detail={musicDetail} />
             )}
@@ -207,12 +204,13 @@ export default function MusicQueuePublic() {
 
         {/* Pending */}
         <section>
-          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-900 mb-3 drop-shadow-[1px_1px_2px_white]`}>
-            ⏳ Pending Songs
+          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center gap-2`}>
+            <FontAwesomeIcon icon={faHourglassHalf} className="text-yellow-200" />
+            Pending Songs
           </h2>
           <div className="space-y-3">
             {queued.length === 0 ? (
-              <p className="text-yellow-700 italic">No pending songs.</p>
+              <p className="text-yellow-100/80 italic">No pending songs.</p>
             ) : (
               queued.map((item, idx) => (
                 <SongCard key={`${item.id}-${idx}`} item={item} />
@@ -223,12 +221,13 @@ export default function MusicQueuePublic() {
 
         {/* Played */}
         <section>
-          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-900 mb-3 drop-shadow-[1px_1px_2px_white]`}>
-            ✅ Played Songs
+          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center gap-2`}>
+            <FontAwesomeIcon icon={faCheck} className="text-yellow-200" />
+            Played Songs
           </h2>
           <div className="space-y-3">
             {completed.length === 0 ? (
-              <p className="text-yellow-700 italic">No songs played yet.</p>
+              <p className="text-yellow-100/80 italic">No songs played yet.</p>
             ) : (
               completed.map((item, idx) => (
                 <SongCard key={`${item.id}-${idx}`} item={item} />
