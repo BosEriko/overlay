@@ -155,7 +155,7 @@ export default function MusicQueuePublic() {
       <div className="relative z-10 container mx-auto p-4 space-y-6">
         {/* Playing */}
         <section>
-          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center gap-2`}>
+          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center justify-center gap-2`}>
             <FontAwesomeIcon icon={faMusic} className="text-yellow-200" />
             Now Playing
           </h2>
@@ -170,7 +170,7 @@ export default function MusicQueuePublic() {
 
         {/* Pending */}
         <section>
-          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center gap-2`}>
+          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center justify-center gap-2`}>
             <FontAwesomeIcon icon={faHourglassHalf} className="text-yellow-200" />
             Pending Songs
           </h2>
@@ -187,7 +187,7 @@ export default function MusicQueuePublic() {
 
         {/* Played */}
         <section>
-          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center gap-2`}>
+          <h2 className={`${pixelify.className} text-xl font-bold text-yellow-100 mb-3 drop-shadow-[1px_1px_2px_black] flex items-center justify-center gap-2`}>
             <FontAwesomeIcon icon={faCheck} className="text-yellow-200" />
             Played Songs
           </h2>
