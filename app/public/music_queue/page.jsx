@@ -59,6 +59,14 @@ export default function MusicQueuePublic() {
     return () => clearInterval(intervalRef.current);
   }, [musicDetail?.isPlaying]);
 
+  useEffect(() => {
+    if (musicDetail) {
+      document.title = `🎵 Now Playing: ${musicDetail.title} - ${musicDetail.singer}`;
+    } else {
+      document.title = 'Music Player Queue';
+    }
+  }, [musicDetail]);
+
   // sort oldest first
   const sortedQueue = [...musicQueue].sort(
     (a, b) => new Date(a.timestamp) - new Date(b.timestamp)
