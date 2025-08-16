@@ -290,6 +290,7 @@ const NowPlayingCard = React.memo(function NowPlayingCard({ detail }) {
         <div className="flex flex-col flex-1">
           <p className="text-xl font-bold text-yellow-900 truncate">{detail.title}</p>
           <p className="text-sm text-yellow-700 font-bold truncate">{detail.singer}</p>
+          {detail.username && (<p className="text-yellow-800 text-xs italic">Added by {detail.username}</p>)}
 
           <ProgressBar currentTime={detail.currentTime} length={detail.length} progress={detail.progress} />
 
