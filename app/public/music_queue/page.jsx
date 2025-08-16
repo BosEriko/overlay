@@ -134,7 +134,10 @@ export default function MusicQueuePublic() {
     [sortedQueue]
   );
   const completed = useMemo(
-    () => sortedQueue.filter((item) => item.status === 'COMPLETED'),
+    () =>
+      [...sortedQueue]
+        .filter(item => item.status === 'COMPLETED')
+        .sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp)),
     [sortedQueue]
   );
 
