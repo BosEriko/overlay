@@ -179,7 +179,7 @@ export default function MusicQueuePublic() {
               <p className="text-yellow-100/80 italic">No pending songs.</p>
             ) : (
               queued.map((item) => (
-                <SongCard key={item.id ?? `${item.music?.id}-${item.timestamp}`} item={item} />
+                <SongCard key={item.timestamp} item={item} />
               ))
             )}
           </div>
@@ -196,7 +196,7 @@ export default function MusicQueuePublic() {
               <p className="text-yellow-100/80 italic">No songs played yet.</p>
             ) : (
               completed.map((item) => (
-                <SongCard key={item.id ?? `${item.music?.id}-${item.timestamp}`} item={item} />
+                <SongCard key={item.timestamp} item={item} />
               ))
             )}
           </div>
