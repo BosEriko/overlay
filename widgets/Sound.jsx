@@ -17,6 +17,7 @@ const SOUND_IDS = [
   'SIT_DOWN',
   'STAND_UP',
   'STRETCH',
+  'WAZZUP',
 ];
 
 export default function SoundWidget({ wsData }) {
