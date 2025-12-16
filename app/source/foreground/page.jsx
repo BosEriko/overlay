@@ -2,7 +2,6 @@
 import MusicWidget from "@widgets/Music";
 import SoundWidget from "@widgets/Sound";
 import DesktopWidget from "@widgets/Desktop";
-import CountdownWidget from "@widgets/Countdown";
 import DetailWidget from "@widgets/Detail";
 import WinnerWidget from "@widgets/Winner";
 import ProductivityWidget from "@widgets/Productivity";
@@ -20,7 +19,6 @@ export default function ForegroundSource() {
       <MusicWidget wsData={wsData} />
       <SoundWidget wsData={wsData} />
       <DesktopWidget />
-      <CountdownWidget />
       <DetailWidget wsData={wsData} />
       <WinnerWidget wsData={wsData} />
       <ProductivityWidget wsData={wsData} />
