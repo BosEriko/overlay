@@ -13,6 +13,3 @@ cp .env.example .env.local
 ## Schedule
 - [Banner](https://overlay.boseriko.com/schedule/banner)
 - [Wallpaper](https://overlay.boseriko.com/schedule/wallpaper)
-
-## Custom Window
-You can also create custom windows by doing `node screenshots` on the browser and removing the white background with **Gimp**. Use the [Window](https://overlay.boseriko.com/widget/window) widget for making custom windows.
