@@ -29,7 +29,7 @@ export default function WallpaperSchedule() {
       </div>
       <div className="border-10 border-yellow-300 flex-1 w-full flex items-center justify-center w-full h-full border-main z-10 bg-[#f0b100] text-[#a65f00]">
         <div className="flex flex-col gap-1 items-center">
-          <div className="text-[#a65f00] [text-shadow:_1px_1px_2px_white] text-8xl">Daily at 8PM</div>
+          <div className="text-[#a65f00] [text-shadow:_1px_1px_2px_white] text-8xl">Daily at 6PM</div>
           <div className="text-[#a65f00] [text-shadow:_1px_1px_2px_white] text-4xl">Monday to Friday GMT+8</div>
         </div>
       </div>
