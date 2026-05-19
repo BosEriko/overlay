@@ -22,7 +22,7 @@ export default function GettingStartedWidget() {
   const fadeIntervalRef = useRef(null);
   const countdownIntervalRef = useRef(null);
 
-  const COUNTDOWN_SCHEDULE = streamConfig?.days?.map((day) => 'sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].indexOf(day)) || [];
+  const COUNTDOWN_SCHEDULE = streamConfig?.days?.map((day) => ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].indexOf(day)) || [];
   const COUNTDOWN_START = streamConfig?.start ? Number(streamConfig.start) - 1 : 0;
   const COUNTDOWN_DURATION = 1;
 
