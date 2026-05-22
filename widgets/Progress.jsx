@@ -1,9 +1,6 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { Pixelify_Sans } from 'next/font/google';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faKeyboard } from '@fortawesome/free-solid-svg-icons';
-import { faCommentDots } from '@fortawesome/free-solid-svg-icons';
 import Screen from '@components/Screen';
 
 const pixelify = Pixelify_Sans({
@@ -12,18 +9,57 @@ const pixelify = Pixelify_Sans({
 });
 
 const Container = ({ children }) => (
-  <div className="h-[1080px] w-[1920px] flex items-start justify-start gap-4 mt-[66px]">
-    {children}
-  </div>
+  <div className="ml-[17px] mt-[66px]">{children}</div>
 );
 
-const Box = ({ children }) => (
-  <div className={`${pixelify.className} bg-yellow-300 rounded-full overflow-hidden shadow-xl text-center border-[5px] border-yellow-500 mb-5`}>
-    <div className="text-yellow-800 text-xl py-1.5 px-3 flex items-center justify-center gap-3">
-      {children}
+const Progress = ({ percent }) => {
+  const radius = 40;
+  const stroke = 7;
+  const normalizedRadius = radius - stroke / 2;
+  const circumference = normalizedRadius * 2 * Math.PI;
+  const strokeDashoffset = circumference - (percent / 100) * circumference;
+
+  return (
+    <div className={`${pixelify.className} relative w-[100px] h-[100px] bg-yellow-300 border-[5px] border-yellow-500 shadow-xl rounded-lg flex items-center justify-center`}>
+      <svg
+        height={radius * 2}
+        width={radius * 2}
+        className="rotate-[-90deg]"
+      >
+        <circle
+          stroke="#facc15"
+          fill="transparent"
+          strokeWidth={stroke}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+          className="opacity-30"
+        />
+
+        <circle
+          stroke="#ca8a04"
+          fill="transparent"
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeDasharray={`${circumference} ${circumference}`}
+          style={{
+            strokeDashoffset,
+            transition: 'stroke-dashoffset 0.5s ease'
+          }}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+      </svg>
+
+      <div className="absolute inset-0 flex flex-col items-center justify-center">
+        <div className="text-2xl text-yellow-700">
+          {percent}%
+        </div>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default function ProgressWidget({ wsData }) {
   const [progress, setProgress] = useState(null);
@@ -39,10 +75,7 @@ export default function ProgressWidget({ wsData }) {
   return (
     <Screen>
       <Container>
-        { progress && <Box>
-          <FontAwesomeIcon icon={faKeyboard} className="text-2xl text-yellow-700" />
-          <div>{progress}%</div>
-        </Box> }
+        <Progress percent={75} />
       </Container>
     </Screen>
   );
