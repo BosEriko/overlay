@@ -75,7 +75,7 @@ export default function ProgressWidget({ wsData }) {
   return (
     <Screen>
       <Container>
-        <Progress percent={75} />
+        <Progress percent={progress} />
       </Container>
     </Screen>
   );
