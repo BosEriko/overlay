@@ -13,14 +13,14 @@ const Container = ({ children }) => (
 );
 
 const Progress = ({ percent }) => {
-  const radius = 40;
-  const stroke = 7;
+  const radius = 50;
+  const stroke = 10;
   const normalizedRadius = radius - stroke / 2;
   const circumference = normalizedRadius * 2 * Math.PI;
   const strokeDashoffset = circumference - (percent / 100) * circumference;
 
   return (
-    <div className={`${pixelify.className} relative w-[100px] h-[100px] bg-yellow-300 border-[5px] border-yellow-500 shadow-xl rounded-lg flex items-center justify-center`}>
+    <div className={`${pixelify.className} relative w-[100px] h-[100px] bg-yellow-300 shadow-xl rounded-full flex items-center justify-center`}>
       <svg
         height={radius * 2}
         width={radius * 2}
@@ -53,9 +53,7 @@ const Progress = ({ percent }) => {
       </svg>
 
       <div className="absolute inset-0 flex flex-col items-center justify-center">
-        <div className="text-2xl text-yellow-700">
-          {percent}%
-        </div>
+        <div className="text-3xl text-yellow-700">{percent}%</div>
       </div>
     </div>
   );
