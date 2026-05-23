@@ -12,18 +12,33 @@ const pixelify = Pixelify_Sans({
   weight: ['700']
 });
 
-const COUNTDOWN_SCHEDULE = env.stream.days.split(',').map((day) => ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].indexOf(day));
-const COUNTDOWN_START = Number(env.stream.start) - 1;
-const COUNTDOWN_DURATION = 1;
-
 const MUSIC_ID = 'KEVIN_MACLEOD_8BIT_DUNGEON_BOSS';
 
 export default function GettingStartedWidget() {
   const [isVisible, setIsVisible] = useState(false);
   const [remainingTime, setRemainingTime] = useState(0);
+  const [streamConfig, setStreamConfig] = useState(null);
   const audioRef = useRef(null);
   const fadeIntervalRef = useRef(null);
   const countdownIntervalRef = useRef(null);
+
+  const COUNTDOWN_SCHEDULE = streamConfig?.days?.map((day) => ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'].indexOf(day)) || [];
+  const COUNTDOWN_START = streamConfig?.start ? Number(streamConfig.start) - 1 : 0;
+  const COUNTDOWN_DURATION = 1;
+
+  useEffect(() => {
+    const fetchConfig = async () => {
+      try {
+        const res = await fetch(`${env.server}/api/data/overlay`);
+        const json = await res.json();
+        setStreamConfig(json);
+      } catch (err) {
+        console.error('Failed to load stream config:', err);
+      }
+    };
+
+    fetchConfig();
+  }, []);
 
   useEffect(() => {
     const audio = new Audio(`/sounds/music/${MUSIC_ID}.mp3`);
@@ -42,6 +57,8 @@ export default function GettingStartedWidget() {
   }, []);
 
   useEffect(() => {
+    if (!streamConfig) return;
+
     const checkTime = () => {
       const now = new Date();
       const currentDay = now.getDay();
@@ -65,7 +82,7 @@ export default function GettingStartedWidget() {
     checkTime();
     const interval = setInterval(checkTime, 30 * 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [streamConfig]);
 
   useEffect(() => {
     const audio = audioRef.current;
