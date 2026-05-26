@@ -9,7 +9,7 @@ const pixelify = Pixelify_Sans({
 });
 
 const Container = ({ children }) => (
-  <div className="ml-[22px] mt-[71px]">{children}</div>
+  <div className="ml-[27px] mt-[76px]">{children}</div>
 );
 
 const Progress = ({ percent }) => {
