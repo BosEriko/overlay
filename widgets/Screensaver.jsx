@@ -1,5 +1,6 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import Ticker from '@components/Ticker';
 import Screen from '@components/Screen';
 
 // Music map
@@ -8,11 +9,13 @@ const MUSIC_IDS = [
   'THE_GRAND_AFFAIR_COUPE',
 ];
 
-export default function MusicWidget({ wsData }) {
+export default function ScreensaverWidget({ wsData }) {
   const audioRefs = useRef({});
   const fadeIntervals = useRef({});
 
-  // Preload all music once
+  const [message, setMessage] = useState('');
+  const [isVisible, setIsVisible] = useState(false);
+
   useEffect(() => {
     MUSIC_IDS.forEach((id) => {
       const audio = new Audio(`/sounds/music/${id}.mp3`);
@@ -24,9 +27,11 @@ export default function MusicWidget({ wsData }) {
     });
   }, []);
 
-  // Play music when alert received
   useEffect(() => {
     if (wsData?.type === 'SCREENSAVER') {
+      setMessage(wsData.ticker.message);
+      setIsVisible(wsData.ticker.isVisible);
+
       const fadeOut = (audio) => {
         clearInterval(fadeIntervals.current[audio.src]);
         fadeIntervals.current[audio.src] = setInterval(() => {
@@ -82,5 +87,11 @@ export default function MusicWidget({ wsData }) {
     }
   }, [wsData]);
 
-  return <Screen />;
+  if (!isVisible) return null;
+
+  return (
+    <Screen>
+      <Ticker message={message} />
+    </Screen>
+  );
 }

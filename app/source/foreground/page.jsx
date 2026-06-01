@@ -1,5 +1,4 @@
 'use client';
-import MusicWidget from "@widgets/Music";
 import SoundWidget from "@widgets/Sound";
 import DesktopWidget from "@widgets/Desktop";
 import DetailWidget from "@widgets/Detail";
@@ -8,7 +7,7 @@ import ProgressWidget from "@widgets/Progress";
 import ProductivityWidget from "@widgets/Productivity";
 import ConnectionWidget from "@widgets/Connection";
 import TypingWidget from "@widgets/Typing";
-import TickerWidget from "@widgets/Ticker";
+import ScreensaverWidget from "@widgets/Screensaver";
 import GettingStartedWidget from "@widgets/GettingStarted";
 import { useWebSocket } from '@hooks/useWebsocket';
 
@@ -17,7 +16,6 @@ export default function ForegroundSource() {
 
   return (
     <div>
-      <MusicWidget wsData={wsData} />
       <SoundWidget wsData={wsData} />
       <DesktopWidget />
       <DetailWidget wsData={wsData} />
@@ -26,7 +24,7 @@ export default function ForegroundSource() {
       <ProductivityWidget wsData={wsData} />
       <ConnectionWidget useWebSocket={useWebSocket} />
       <TypingWidget wsData={wsData} />
-      <TickerWidget wsData={wsData} />
+      <ScreensaverWidget wsData={wsData} />
       <GettingStartedWidget wsData={wsData} />
     </div>
   );
