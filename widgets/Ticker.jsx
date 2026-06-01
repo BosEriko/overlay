@@ -8,9 +8,9 @@ export default function TickerWidget({ wsData }) {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    if (wsData?.type === 'TICKER') {
-      setMessage(wsData.message);
-      setIsVisible(wsData.isVisible);
+    if (wsData?.type === 'SCREENSAVER') {
+      setMessage(wsData.ticker.message);
+      setIsVisible(wsData.ticker.isVisible);
     }
   }, [wsData]);
 

@@ -26,7 +26,7 @@ export default function MusicWidget({ wsData }) {
 
   // Play music when alert received
   useEffect(() => {
-    if (wsData?.type === 'MUSIC') {
+    if (wsData?.type === 'SCREENSAVER') {
       const fadeOut = (audio) => {
         clearInterval(fadeIntervals.current[audio.src]);
         fadeIntervals.current[audio.src] = setInterval(() => {
@@ -58,22 +58,22 @@ export default function MusicWidget({ wsData }) {
         }, 100);
       };
 
-      if (!wsData.id || !wsData.isPlaying) {
+      if (!wsData.music.id || !wsData.music.isPlaying) {
         Object.values(audioRefs.current).forEach((audio) => {
           fadeOut(audio);
         });
         return;
       }
 
-      const audio = audioRefs.current[wsData.id];
+      const audio = audioRefs.current[wsData.music.id];
 
       if (!audio) {
-        console.warn(`🚫 Unknown music ID: ${wsData.id}`);
+        console.warn(`🚫 Unknown music ID: ${wsData.music.id}`);
         return;
       }
 
       Object.entries(audioRefs.current).forEach(([id, a]) => {
-        if (id !== wsData.id) {
+        if (id !== wsData.music.id) {
           fadeOut(a);
         }
       });
