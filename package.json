@@ -30,6 +30,6 @@
     "@types/react-dom": "^19",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vercel": "^50.0.1"
+    "vercel": "^56.3.1"
   }
 }
